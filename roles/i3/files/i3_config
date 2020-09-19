@@ -5,7 +5,7 @@ font pango:Hack 7
 
 # start a terminal
 bindsym $mod+Return exec alacritty
-bindsym $mod+Shift+Return exec alacritty -e /nnn
+bindsym $mod+Shift+Return exec alacritty -e nnn
 
 # kill focused window
 bindsym $mod+Shift+q kill
