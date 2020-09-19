@@ -1,0 +1,8 @@
+---
+packages:
+  pacman:
+    - 'virtualbox'
+    - 'virtualbox-guest-iso'
+  aur:
+    - 'virtualbox-ext-oracle'
+

@@ -1,0 +1,25 @@
+---
+- include_role: name='software'
+
+- name: Create new group - wifi
+  group:
+    name: wifi
+
+- name: Add user to wifi group
+  user:
+    name: '{{ user.name }}'
+    groups: wifi
+    append: yes
+
+- name: Create wpa config
+  template:
+    src: wifi.conf.j2
+    dest: '/etc/wpa_supplicant/wifi.conf'
+
+- name: Add wpa gui autostart
+  blockinfile:
+    marker: '# {mark} Ansible managed: wpa role'
+    path: '{{ user.home }}/.config/startup.sh'
+    block: 'wpa_gui &'
+  become_user: '{{ user.name }}'
+  when: ansible_os_family == "Archlinux"

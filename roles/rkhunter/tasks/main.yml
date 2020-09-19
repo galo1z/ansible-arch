@@ -1,0 +1,21 @@
+---
+- include_role: name='software'
+
+- name: rkhunter | Update rkhunter config
+  template:
+    src: rkhunter.conf.j2
+    dest: /etc/rkhunter.conf
+
+- name: rkhunter | Check is rkhunter.dat (baseline file) exists
+  stat:
+    path: /var/lib/rkhunter/db/rkhunter.dat
+  register: rkhunter_db
+
+- name: rkhunter | Set baseline file properties
+  shell: 'rkhunter --propupd'
+  #  ignore_errors: yes  
+  when: rkhunter_db.stat.exists == False 
+
+  #- name: rkhunter | Run checks
+  #  shell: 'rkhunter --check --skip-keypress'
+  #  #    ignore_errors: yes  

@@ -1,0 +1,34 @@
+---
+packages:
+  common:
+    - 'zsh'
+    - 'git'
+    - 'fzf'
+    - 'lsof'
+    - 'xclip'
+
+zsh:
+  theme: pygmalion
+  plugins:
+  - 'fzf'
+  - 'git-extras'
+  - 'docker'          #docker command-line completion
+  - 'docker-compose'  #docker command-line completion
+
+shell:
+  aliases: |
+    alias clip='xclip -sel clip'
+    alias genpass='openssl rand -base64 18 | xclip -sel clip'
+    alias rg='rg --hidden --ignore-case'
+    alias lsof1='lsof -i -P -n'
+    alias lsof2='lsof -i -P -n | cut -f 1 -d " "| uniq | tail -n +2'
+    alias ps1='ps awwfux | less -S'
+    alias mgrep='egrep -v "^$|^[[:space:]]*#"'
+    alias nmap='sudo nmap'
+    alias pacman='sudo pacman'
+    alias tmux='tmux -2' # Needed for 256 color tmux to work
+    alias vim='nvim'
+  exports: | 
+    export PAGER='less'
+    export EDITOR='nvim'
+    export TERM='xterm-256color'

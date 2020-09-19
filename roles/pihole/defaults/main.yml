@@ -1,0 +1,10 @@
+---
+packages:
+  common:
+    - 'net-tools'
+  pacman:
+    - 'bind-tools'
+  apt:
+    - 'dnsutils'
+  aur:
+    - 'pi-hole-standalone'

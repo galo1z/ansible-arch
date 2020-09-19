@@ -1,0 +1,36 @@
+---
+- include_role: name='software'
+
+- name: pihole | Configure pihole (remove default DNS servers)
+  lineinfile:
+    state: absent
+    regexp: '{{ item }}'
+    path: '/etc/dnsmasq.d/01-pihole.conf'
+  with_items:
+    - 'server=8.8.*'
+    #    - 'addn-hosts=/etc/pihole/custom.list'
+
+- name: pihole | Configure which DNS is used 
+  blockinfile:
+    path: '/etc/dnsmasq.d/01-pihole.conf'
+    marker: '# {mark} Ansible: dns role'
+    block: |
+      server=9.9.9.9
+
+- name: pihole | Enable pihole
+  systemd:
+    name: 'pihole-FTL'
+    enabled: yes
+    state: restarted
+
+- name: pihole-docker | Make sure no immutable attr to resolv.conf is set
+  shell: 'chattr -i /etc/resolv.conf'
+
+- name: pihole-docker | Add local DNS to /etc/resolv.conf
+  copy:
+    dest: '/etc/resolv.conf'
+    content: |
+      nameserver 127.0.0.1
+
+- name: pihole-docker | Add immutable attr to resolv.conf
+  shell: 'chattr +i /etc/resolv.conf'

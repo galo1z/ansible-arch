@@ -1,0 +1,39 @@
+---
+- include_role: name='software'
+
+- name: virtualbox | Install kernel-dependent software 1
+  pacman:
+    name: virtualbox-host-modules-arch
+  when: is_kernel_default == 'True'
+
+- name: virtualbox | Install kernel-dependent software 2
+  pacman:
+    name: '{{ item }}'
+  with_items:
+    - virtualbox-host-dkms
+    - linux-{{ kernel_name }}-headers
+  when: is_kernel_default == 'False'
+
+- name: virtualbox | Check if vboxdrv module is loaded
+  shell: 'lsmod | grep vboxdrv'
+  register: vboxdrv
+  changed_when: false
+  failed_when: false
+
+- name: virtualbox | Load mandatory module vboxdrv
+  command: 'modprobe vboxdrv'
+  when: vboxdrv.stdout == ''
+
+- name: virtualbox | Enable unit for virtualbox (when non-standard kernel is used)
+  systemd:
+    name: systemd-modules-load.service
+    state: started
+    enabled: yes
+  when:
+    - is_kernel_default == 'False'
+
+- name: virtualbox | Add user to vboxusers group
+  user:
+    name: '{{ user.name }}'
+    groups: vboxusers
+    append: yes

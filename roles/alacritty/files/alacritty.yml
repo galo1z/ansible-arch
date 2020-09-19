@@ -1,0 +1,21 @@
+selection:
+  semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
+  save_to_clipboard: true
+
+font:
+  size: 10.0
+  normal:
+     family: Hack
+     style: Regular
+ 
+  bold:
+     family: Hack
+     style: Bold
+ 
+  italic:
+     family: Hack
+     style: Italic
+ 
+  bold_italic:
+     family: Hack
+     style: Bold Italic

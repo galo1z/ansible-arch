@@ -1,0 +1,42 @@
+{% if SCRIPTWHITELIST is defined %}
+{% for script in SCRIPTWHITELIST %}
+SCRIPTWHITELIST="{{script}}"
+{% endfor %}
+{% endif %}
+
+{% if ALLOWDEVFILE is defined %}
+{% for path in ALLOWDEVFILE %}
+ALLOWDEVFILE="{{path}}"
+{% endfor %}
+{% endif %}
+
+{% if ALLOWPROCDELFILE is defined %}
+{% for path in  ALLOWPROCDELFILE %}
+ALLOWPROCDELFILE="{{path}}"
+{% endfor %}
+{% endif %}
+
+{% if ALLOWHIDDENFILE is defined %}
+{% for path in ALLOWHIDDENFILE %}
+ALLOWHIDDENFILE="{{path}}"
+{% endfor %}
+{% endif %}
+
+{% if RTKT_FILE_WHITELIST is defined %}
+{% for path in RTKT_FILE_WHITELIST %}
+RTKT_FILE_WHITELIST="{{path}}"
+{% endfor %}
+{% endif %}
+
+{% if ALLOWPROCLISTEN is defined %}
+{% for path in ALLOWPROCLISTEN %}
+ALLOWPROCLISTEN="{{path}}"
+{% endfor %}
+{% endif %}
+
+INSTALLDIR=/usr
+DBDIR=/var/lib/rkhunter/db
+SCRIPTDIR=/usr/lib/rkhunter/scripts
+TMPDIR=/var/lib/rkhunter/tmp
+USER_FILEPROP_FILES_DIRS=/etc/rkhunter.conf
+BINDIR="+~/.local/bin"

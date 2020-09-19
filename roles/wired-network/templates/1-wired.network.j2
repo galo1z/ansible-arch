@@ -1,0 +1,9 @@
+[Match]
+Name={{ wired_net.interface }}
+[Network]
+{% if wired_net.ip is defined and wired_net.gateway is defined %}
+Address = {{ wired_net.ip }}
+Gateway = {{ wired_net.gateway }}
+{% else %}
+DHCP=ipv4
+{% endif %}

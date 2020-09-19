@@ -1,0 +1,19 @@
+---
+- include_role: name='software'
+- block:
+   - name: typora | Create config dir
+     file:
+      state: directory
+      path: '{{ user.home }}/.config/Typora/themes'
+
+   - name: typora | Download OneDark theme
+     unarchive:
+       src: 'https://github.com/sweatran/typora-onedark-theme/releases/download/v1.01/typora-onedark-theme.zip'
+       dest: '{{ user.home }}/.config/Typora/themes'
+       remote_src: yes
+
+   - name: typora | Replace css config
+     copy:
+      src: onedark.css
+      dest: '{{ user.home }}/.config/Typora/themes/onedark.css'
+  become_user: '{{ user.name }}'

@@ -1,0 +1,55 @@
+---
+- include_role: name='software'
+- include_role: name='xorg'
+  when: os == 'arch' 
+
+- block:
+    - name: i3 | Create directories
+      file:
+        state: directory
+        path: '{{ item }}'
+      with_items: 
+        - '{{ user.home }}/.config/i3'
+        - '{{ user.home }}/screenshots/desktop'
+        - '{{ user.home }}/screenshots/window'
+        - '{{ user.home }}/screenshots/area'
+
+    - name: i3 | Download wallpeaper
+      get_url:
+        url: 'https://w.wallhaven.cc/full/6k/wallhaven-6k1dj7.jpg'
+        dest: '{{ user.home }}/.config/wall.jpg'
+
+    - block:
+        - name: i3 | Create i3 config
+          copy:
+            src: i3_config
+            dest: '{{ user.home }}/.config/i3/config'
+
+        - name: i3 | Create i3start script
+          copy:
+            src: i3start.sh
+            dest: '{{ user.home }}/.config/i3start.sh'
+            mode: 0700
+
+        - name: i3 | Create startup script
+          copy:
+            src: startup.sh
+            dest: '{{ user.home }}/.config/startup.sh'
+            mode: 0700
+
+        - name: i3 | Create xinitrc config
+          copy:
+            dest: '{{ user.home }}/.xinitrc'
+            content: |
+              exec ~/.config/i3start.sh
+
+        - name: i3 | Enable autostart of i3 on login
+          copy:
+            dest: '{{ user.home }}/.zprofile'
+            content: |
+              if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
+                exec startx; exit
+              fi
+      when: ansible_os_family == "Archlinux"
+
+  become_user: '{{ user.name }}'

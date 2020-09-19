@@ -1,0 +1,6 @@
+---
+packages:
+  pacman:
+    - 'xorg-server'
+    - 'xorg-xinit'
+    - 'xf86-video-vesa' # video driver

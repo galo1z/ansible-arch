@@ -1,0 +1,44 @@
+---
+- include_role: name='software'
+
+- block:
+  - name: sound | Enable pasystray autostart
+    blockinfile:
+      marker: '# {mark} Ansible managed: sound role'
+      path: '{{ user.home }}/.config/startup.sh'
+      block: 'pasystray &'
+
+  - name: sound | Create config dir
+    file:
+      state: directory
+      path: '/home/user1/.config/pulse'
+
+  - name: sound | Create alsa config 1
+    copy:
+      dest: ~/.config/pulse/daemon.conf
+      content: |
+        default-sample-format = float32le
+        default-sample-rate = 48000
+        alternate-sample-rate = 44100
+        default-sample-channels = 2
+        default-channel-map = front-left,front-right
+        default-fragments = 2
+        default-fragment-size-msec = 125
+        resample-method = soxr-vhq
+        enable-lfe-remixing = no
+        high-priority = yes
+        nice-level = -11
+        realtime-scheduling = yes
+        realtime-priority = 9
+        rlimit-rtprio = 9
+        daemonize = no
+  become_user: '{{ user.name }}'
+
+- name: sound | Create alsa config 2
+  copy:
+    dest: '/etc/alsa/conf.d/99-pulseaudio-default.conf'
+    content: |
+      pcm.!default {
+         type plug
+         slave.pcm hw
+      }

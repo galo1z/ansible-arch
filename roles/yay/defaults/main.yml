@@ -1,0 +1,6 @@
+---
+packages:
+  pacman:
+    - 'sudo'
+  aur:
+    - 'yay'

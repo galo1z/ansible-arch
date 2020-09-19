@@ -1,0 +1,19 @@
+---
+- include_role: name='software'
+
+- block:
+  - name: zsh | Create zsh config file
+    template:
+      src: zshrc.j2
+      dest: '{{ user.home }}/.zshrc'
+  
+  - name: zsh | Clone oh-my-zsh repository
+    git:
+      repo: https://github.com/robbyrussell/oh-my-zsh.git
+      dest: '{{ user.home }}/.oh-my-zsh'
+  become_user: '{{ user.name }}'
+  
+- name: zsh | Change default shell
+  user:
+    name: '{{ user.name }}'
+    shell: /usr/bin/zsh

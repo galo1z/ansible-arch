@@ -1,0 +1,19 @@
+---
+- include_role: name='software'
+
+- name: wireguard | Create config
+  template:
+    src: 'vpn.conf.j2'
+    dest: '/etc/wireguard/vpn.conf'
+  notify: 'Restart wireguard'
+  
+- name: wireguard | Fix wg-quick script 
+  replace:
+    path: /usr/bin/wg-quick
+    regexp: 'echo -n "\$restore" \| cmd \$iptables-restore -n$'
+    replace: 'echo -n "$restore" | cmd $iptables-restore -n -w'
+
+- name: wireguard | Enable wireguard VPN
+  systemd:
+    name: 'wg-quick@vpn'
+    enabled: yes

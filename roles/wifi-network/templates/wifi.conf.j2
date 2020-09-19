@@ -1,0 +1,17 @@
+ctrl_interface=/run/wpa_supplicant
+ctrl_interface_group=wifi
+update_config=1
+
+# AP scanning
+ap_scan=1
+
+#country=US
+
+{% if wpa.ssid is defined %}
+{% if wpa.psk  is defined %}
+network={
+    ssid="{{ wpa.ssid }}"
+    psk="{{ wpa.psk }}"
+}
+{% endif %}
+{% endif %}

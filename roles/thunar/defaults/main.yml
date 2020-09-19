@@ -1,0 +1,9 @@
+---
+packages:
+  common:
+    - 'thunar'
+    - 'thunar-archive-plugin'
+    - 'catfish' # For search
+    - 'mlocate' # For search
+    - 'clamav'  # For virus scan
+    - 'clamtk'  # For virus scan

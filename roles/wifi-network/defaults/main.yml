@@ -1,0 +1,7 @@
+---
+packages:
+  pacman:
+    - 'wpa_supplicant'
+  aur:
+    - 'wpa_supplicant_gui'
+

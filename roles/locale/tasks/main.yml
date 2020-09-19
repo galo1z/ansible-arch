@@ -1,0 +1,22 @@
+---
+- name: locale | Uncomment locales in /etc/locale.gen
+  lineinfile:
+    path: /etc/locale.gen
+    regexp: '#?en_US.UTF-8 UTF-8'
+    line: 'en_US.UTF-8 UTF-8'
+
+- name: locale | Set locale   
+  shell: |
+    localectl status | grep 'Locale' | awk '{print $3}'
+    locale-gen 2>&1 1>/dev/null
+    localectl set-locale {{ locale.name }}
+  register: locale_changed
+  changed_when: locale_changed.stdout != locale.full_name
+
+- name: locale | Set keymap 
+  shell: |
+    localectl status | grep 'Keymap' | awk '{print $3}'
+    localectl set-keymap {{ locale.keymap }}
+  register: keymap_changed
+  changed_when: keymap_changed.stdout != locale.keymap
+

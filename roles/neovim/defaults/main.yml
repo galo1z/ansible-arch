@@ -1,0 +1,10 @@
+---
+packages:
+  common:
+    - 'neovim'
+    - 'nodejs' # nvim CoC req
+    - 'yarn'   # nvim CoC req
+  pip:
+    - 'neovim'
+    - 'jedi'   # nvim CoC req
+    - 'pep8'   # nvim CoC req

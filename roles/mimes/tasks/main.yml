@@ -1,0 +1,29 @@
+---
+- block:
+  - name: mimes |  Create folders
+    file:
+      state: directory
+      path: '{{ user.home }}/.local/share/applications'
+      
+  - name: mimes | Copy .desktop files to local folder
+    copy:
+      remote_src:  yes
+      src: '/usr/share/applications/{{ item }}.desktop'
+      dest: '{{ user.home }}/.local/share/applications/{{ item }}.desktop'
+    with_items:
+      - 'qView'
+      - 'firefox'
+      - 'thunar'
+      - 'xed'
+      - 'mpv'
+      - 'org.pwmt.zathura'
+      - 'org.pwmt.zathura-ps'
+      - 'org.pwmt.zathura-djvu'
+      - 'org.pwmt.zathura-cb'
+      - 'org.pwmt.zathura-pdf-mupdf'
+  
+  - name: mimes | Create mimeinfo config
+    copy:
+      src: 'mimeinfo.cache'
+      dest: '{{ user.home }}/.local/share/applications/mimeinfo.cache'
+  become_user: '{{ user.name }}'

@@ -1,0 +1,57 @@
+# use script in blocks folder if no command specified
+command=~/.config/i3blocks/blocks/$BLOCK_NAME
+
+# Enable custom font
+markup=pango
+
+separator=true
+separator_block_width=15
+
+### SOUND
+
+[volume]
+interval=2
+signal=10
+
+[mpd_prev]
+command=mpc prev 1>/dev/null; echo
+interval=once
+label=
+
+[mpd_control]
+command=/home/user1/.config/i3blocks/music_player.sh
+interval=once
+
+[mpd_next]
+command=mpc next 1>/dev/null; echo
+interval=once
+label=
+
+### RESOURCES
+
+[root]
+command=df -h / | awk 'FNR==2{print $4}'
+interval=60
+label=# 
+
+[cpu_usage]
+command=sar 1 1 | grep 'Average' | awk '{print $8}'
+interval=2
+label=CPU 
+min_width=75
+
+[memory]
+command=free -h --si | grep 'Mem:'| awk '{ print $7 }'
+interval=2
+label=Mem 
+min_width=55
+
+# DATE
+
+[date]
+command=date  '+%d.%b %a'
+interval=2
+
+[time]
+command=date '+%R'
+interval=1

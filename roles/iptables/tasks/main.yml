@@ -1,0 +1,23 @@
+---
+- include_role: name='software'
+
+- name: iptables | Run create_iptables_config.py script
+  script: 'create_iptables_config.py'
+
+- name: iptables | Copy create_iptables_config.py script to /etc/iptables
+  copy:
+    src: 'create_iptables_config.py'
+    dest: '/etc/iptables/create_iptables_config.py'
+    mode: '0700'
+
+- name: iptables | Create cronjob to update list of bad IPs
+  cron:
+    name: "Update iptables rules"
+    special_time: reboot
+    job: "/etc/iptables/create_iptables_config.py"
+
+- name: iptables | Enable and start iptables
+  systemd:
+    name: iptables
+    state: restarted
+    enabled: yes

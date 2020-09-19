@@ -1,0 +1,26 @@
+---
+- include_role: name='software'
+
+- name: firejail | Enable Apparmor globally
+  blockinfile:
+    path: '/etc/firejail/globals.local'
+    block: 'apparmor'
+    marker: '# {mark} Ansible managed: firejail role'
+    create: yes
+
+- name: frejail | Enable apparmor integration
+  shell: 'apparmor_parser -r /etc/apparmor.d/firejail-default'
+
+- name: firejail | Fix Telegram profile
+  shell: "sed -i 's/include disable-programs.inc/#include disable-programs.inc/' /etc/firejail/telegram.profile"
+
+- name: firejail | Fix Firefox profile
+  blockinfile:
+    path: '/etc/firejail/firefox.profile'
+    block: 'noblacklist ${HOME}/Downloads'
+    marker: '# {mark} Ansible managed: firejail role'
+
+- name: firejail | Enable firejail for all known applications
+  shell: firecfg
+  failed_when: false
+

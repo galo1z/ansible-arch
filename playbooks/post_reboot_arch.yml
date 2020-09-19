@@ -1,0 +1,54 @@
+---
+- name: Rock and roll!
+  hosts: localhost
+  connection: local
+  become: yes
+  become_method: su
+  vars:
+    virtualbox_installed: 'False'
+
+  roles:
+    - { role: 'firefox',              tags: 'firefox' }
+    - { role: 'firejail',             tags: 'firejail' }
+#    - { role: 'rkhunter',             tags: 'rkhunter' } #TODO
+
+  tasks:
+    - name: Fix access rights for files in home dir
+      shell: 'chmod -R go-rwx /home/{{ user.name }}/'
+      tags: access
+  
+    - name: post | Show commands to finish configuration
+      debug:
+        msg: |
+          #  EXECUTE THIS IN NVIM:
+          #  call dein#install()
+          #  CocInstall coc-clangd
+          #  CocInstall coc-python 
+          #
+          #  EXECUTE THIS IN SHELL:
+          #  systemctl --user enable mpd && systemctl --user start mpd 
+          
+    - name: Show ascii art to get attention
+      debug:
+        msg: |
+          #                   -`
+          #                  .o+`
+          #                 `ooo/
+          #                `+oooo:
+          #               `+oooooo:
+          #               -+oooooo+:
+          #             `/:-:++oooo+:
+          #            `/++++/+++++++:
+          #           `/++++++++++++++:
+          #          `/+++ooooooooooooo/`
+          #         ./ooosssso++osssssso+`
+          #        .oossssso-````/ossssss+`
+          #       -osssssso.      :ssssssso.
+          #      :osssssss/        osssso+++.
+          #     /ossssssss/        +ssssooo/-
+          #   `/ossssso+/:-        -:/+osssso+-
+          #  `+sso+:-`                 `.-/+oso:
+          # `++:.                           `-/+/
+          # .`                                 `
+          #     MANUALLY ENTER COMMANDS ABOVE
+      tags: ascii

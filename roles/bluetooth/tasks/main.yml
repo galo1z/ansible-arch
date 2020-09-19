@@ -1,0 +1,26 @@
+---
+- include_role: name='software'
+
+- name: bluetooth | Enable auto power-on after boot
+  shell: "sed -i 's/#AutoEnable=false/AutoEnable=true/' /etc/bluetooth/main.conf"
+
+- name: bluetooth | Load bluetooth modules in PulseAudio
+  blockinfile:
+    path: '/etc/pulse/system.pa'
+    block: |
+      load-module module-bluetooth-policy
+      load-module module-bluetooth-discover
+
+- name: bluetooth | Add bluetooth gui to autostart
+  blockinfile:
+    marker: '# {mark} Ansible managed: bluetooth role'
+    path: '{{ user.home }}/.config/startup.sh'
+    block: 'blueman-tray &'
+  when: ansible_os_family == "Archlinux"
+  become_user: '{{ user.name }}'
+
+- name: bluetooth | Enable and start service
+  systemd:
+    name: 'bluetooth.service'
+    enabled: yes
+    state: started

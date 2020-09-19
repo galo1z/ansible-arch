@@ -1,0 +1,13 @@
+---
+- name: hostname | Set hostname
+  hostname:
+    name: "{{ hostname }}"
+    use: systemd
+
+- name: hostname | Set hostname in /etc/hosts 
+  blockinfile:
+    marker: '# {mark} Ansible managed: hostname role'
+    path: "/etc/hosts"
+    block: |
+      127.0.0.1 {{ hostname }}.lo {{ hostname }}
+      127.0.0.1 localhost

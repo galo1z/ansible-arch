@@ -1,0 +1,6 @@
+---
+packages:
+  common:
+    - 'mpd'
+    - 'mpc'
+    - 'ncmpcpp'

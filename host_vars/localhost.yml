@@ -1,0 +1,30 @@
+---
+user:
+  name: 'user1'
+  home: '/home/user1'
+
+is_kernel_default: 'True'
+#kernel_name: 'zen'
+
+fstab_mounts: |
+  UUID=DE424A0D4249EABB /mnt/files1 ntfs-3g  nofail,remove_hiberfile,uid=1000,umask=0022 0 0
+  UUID=12C2F6B1C2F69865 /mnt/files2 ntfs-3g  nofail,remove_hiberfile,uid=1000,umask=0022 0 0
+
+wired_net:
+  interface: 'enp34s0'
+  ip: '192.168.0.3/24' # dhcp if undefined
+  gateway: '192.168.0.1'
+
+#wifi:
+#  ssid: ''
+#  psk: ''
+
+### wireguard
+wireguard:
+  priv_key: ''
+  pub_key: ''
+  address: '' 
+  endpoint: ''
+
+firefox:
+  profile: 'x5hctaa8.default-release' # CHANGE ME

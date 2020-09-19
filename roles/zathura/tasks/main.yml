@@ -1,0 +1,15 @@
+---
+- include_role: name='software'
+
+- block:
+  - name: zathura | Create config directory
+    file:
+      state: directory
+      path: '{{ user.home }}/.config/zathura'
+  
+  - name: zathura | Create config
+    lineinfile:
+      path: '{{ user.home }}/.config/zathura/zathurarc'
+      line: 'set selection-clipboard clipboard'
+      create: yes
+  become_user: '{{ user.name }}'

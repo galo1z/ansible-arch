@@ -1,0 +1,5 @@
+---
+- include_role: name='software'
+
+- name: pacman | Sort mirrors by reflector
+  shell: reflector --threads 20 --latest 20 -p https --sort rate --save /etc/pacman.d/mirrorlist

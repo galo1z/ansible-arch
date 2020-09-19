@@ -1,0 +1,49 @@
+---
+- name: Rock and roll!
+  hosts: localhost
+  connection: local
+  become: yes
+  become_method: su
+  roles:
+    - { role: 'hostname',             tags: 'hostname' }
+    - { role: 'locale',               tags: 'locale' }
+    - { role: 'time',                 tags: 'time' }
+    - { role: 'pacman',               tags: 'pacman' }
+    - { role: 'user',                 tags: 'user' }
+    - { role: 'yay',                  tags: 'yay' }
+    - { role: 'custom-hardening',     tags: 'hardening' }
+    - { role: 'fstab',                tags: 'fstab' }
+    - { role: 'common_software',      tags: 'common' }
+    - { role: 'extra_software',       tags: 'extra' }
+    - { role: 'fonts',                tags: 'fonts' }
+
+    - { role: 'wired-network',        tags: 'network' }
+    - { role: 'pihole',               tags: 'pihole' }
+    - { role: 'wireguard',            tags: 'wireguard' }
+    - { role: 'iptables',             tags: 'iptables' }
+
+    - { role: 'i3',                   tags: 'i3' }
+    - { role: 'i3blocks',             tags: 'i3blocks' }
+    - { role: 'zsh',                  tags: 'zsh' }
+    - { role: 'neovim',               tags: 'neovim' }
+    - { role: 'tmux',                 tags: 'tmux' }
+    - { role: 'thunar',               tags: 'thunar' }
+    - { role: 'zathura',              tags: 'zathura' }
+    - { role: 'typora',               tags: 'typora' }
+    - { role: 'alacritty',            tags: 'alacritty' }
+    - { role: 'bluetooth',            tags: 'bluetooth' }
+    - { role: 'sound',                tags: 'sound' }
+    - { role: 'mpd',                  tags: 'mpd' }
+    - { role: 'virtualbox',           tags: 'virtualbox' }
+
+    - { role: 'mimes',                tags: 'mimes' }
+    - { role: 'apparmor',             tags: 'apparmor' }
+
+# NOT READY:
+#    - { role: 'dev-sec.os-hardening', tags: 'hardening' }
+#    - { role: 'wifi-network',         tags: 'network' }
+#    - { role: 'qemu',                 tags: 'qemu' }
+#    - { role: 'speed_boost',          tags: 'speed_boost' }
+#
+# NOT USED:
+# pyenv_zsh

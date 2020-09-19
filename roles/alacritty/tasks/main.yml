@@ -1,0 +1,14 @@
+---
+- include_role: name='software'
+
+- block:
+  - name: alacritty | Create config directory
+    file:
+      state: directory
+      dest: '{{ user.home }}/.config/alacritty'
+  
+  - name: alacritty | Create config file
+    copy:
+      src: alacritty.yml
+      dest: '{{ user.home }}/.config/alacritty/alacritty.yml'
+  become_user: '{{ user.name }}'

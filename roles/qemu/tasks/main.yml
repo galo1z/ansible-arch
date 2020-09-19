@@ -1,0 +1,57 @@
+---
+- include_role: name='software'
+
+- name: Add user to libvrt group
+  shell: 'adduser {{ user.name }} libvirt'
+
+- name: Enable and start qemu
+  systemd:
+    name: libvirtd
+    state: started
+    enabled: yes
+
+- name: Configure bridge for KVM
+  shell:
+    virsh net-destroy default
+    virsh net-undefine default
+    ip link delete virbr0 type bridge
+    ip link delete virbr0-nic
+
+- name: Create config 1
+  file:
+    path: /etc/netplan/00-installer-config.yaml
+    content: |
+       network:
+         ethernets:
+           enp34s0:
+             dhcp4: true
+         bridges:
+            br0:
+              interfaces: [ enp34s0 ]
+              mtu: 1500
+              parameters:
+                stp: true
+                forward-delay: 4
+              dhcp4: yes
+              dhcp6: no
+         version: 2
+
+- name: 'Configure bridge for KVM 3'
+  file:
+    path: '~/host-bridge.xml'
+    content: |
+      <network>
+        <name>host-bridge</name>
+        <forward mode="bridge"/>
+        <bridge name="br0"/>
+      </network>
+
+- name: 'Configure bridge for KVM 2'
+  shell: |
+    netplan --debug apply
+    virsh net-define ~/host-bridge.xml
+    rm ~/host-bridge.xml
+    virsh net-start host-bridge
+    virsh net-autostart host-bridge
+
+

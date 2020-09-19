@@ -1,0 +1,19 @@
+{% if music_directory is defined %}
+music_directory    "{{ music_dir }}"
+{% else %}
+music_directory    "{{ user.home }}/Music"
+{% endif %}
+playlist_directory "{{ user.home }}/.config/mpd/playlists"
+db_file            "{{ user.home }}/.config/mpd/tag_cache"
+log_file           "{{ user.home }}/.config/mpd/mpd.log"
+state_file         "{{ user.home }}/.config/mpd/state"
+sticker_file       "{{ user.home }}/.config/mpd/sticker.sql"
+pid_file           "{{ user.home }}/.config/mpd/pid"
+
+user               "{{ user.name }}"
+bind_to_address    "127.0.0.1"
+
+audio_output {
+  type "pulse"
+  name "pulse audio"
+}

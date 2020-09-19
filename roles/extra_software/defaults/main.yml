@@ -1,0 +1,18 @@
+packages:
+  pacman:
+    - 'telegram-desktop'
+    - 'keepassxc'
+    - 'qbittorrent'
+    - 'libreoffice'
+    - 'fbreader'
+    - 'fontforge'
+    - 'chromium'
+    - 'torbrowser-launcher'
+  pip:
+    - 'youtube-dl'
+  aur:
+    - 'bitwarden'
+    - 'etcher'
+    - 'woeusb'
+#    - 'standardnotes-desktop'
+    - 'grv'

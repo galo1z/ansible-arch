@@ -1,0 +1,34 @@
+---
+- include_role: name='software'
+
+- block:
+    - name: neovim | Create dirs for plugins
+      file:
+        state: directory
+        path: '{{ user.home }}/.config/nvim/{{ item }}'
+      loop:  
+        - 'colors'
+
+    - name: neovim | Install my colorscheme
+      copy:
+        src: 'hybrid.vim' 
+        dest: '{{ user.home}}/.config/nvim/colors/'
+
+    - name: neovim | Create init.vim config
+      template:
+        src: 'init.vim.j2'
+        dest: '{{ user.home }}/.config/nvim/init.vim'
+   
+    - name: neovim | Download dein
+      get_url:
+        url: 'https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh'
+        dest: '~/dein_installer.sh'
+      
+    - name: neovim | Install dein
+      shell: '/bin/sh ~/dein_installer.sh ~/.local/share/dein'
+
+    - name: neovim | Delete dein installation script
+      file:
+        state: absent
+        dest: '~/dein_installer.sh'
+  become_user: '{{ user.name }}'  

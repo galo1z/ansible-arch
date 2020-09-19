@@ -1,0 +1,7 @@
+---
+#- name: mpd | restart
+#  systemd:
+#    scope: user
+#    state: restarted
+#    name: mpd
+#  become_user: '{{ user.name }}'

@@ -1,0 +1,11 @@
+---
+packages:
+  pacman:
+    - 'docker'
+  apt:
+    - 'apt-transport-https'
+    - 'ca-certificates'
+    - 'curl'
+    - 'software-properties-common'
+  pip_sys:
+    - 'docker'

@@ -1,0 +1,11 @@
+---
+- name: network | Configure systemd-networkd
+  template:
+    src: '1-wired.network.j2'
+    dest: '/etc/systemd/network/1-wired.network'
+  notify: 'Restart networkd'
+
+- name: network | Enable networkd
+  systemd:
+    enabled: yes
+    name: 'systemd-networkd'

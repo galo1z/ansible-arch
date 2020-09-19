@@ -1,0 +1,23 @@
+---
+- include_role: name='software'
+
+- block:
+  - name: mpd | Create conf directory
+    file:
+      state: directory
+      path: '{{ item }}'
+    with_items:
+      - '{{ user.home }}/.config/mpd/playlists' 
+      - '{{ user.home }}/.config/ncmpcpp'
+
+  - name: mpd | Create mpd config
+    template:
+      src: mpd.conf.j2
+      dest:  '{{ user.home }}/.config/mpd/mpd.conf'
+
+  - name: mpd | Add defcon radio playlist
+    copy:
+      dest: '{{ user.home }}/.config/mpd/playlists/defcon.m3u'
+      content: |
+        http://ice4.somafm.com/defcon-256-mp3
+  become_user: '{{ user.name }}'

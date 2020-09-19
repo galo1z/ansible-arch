@@ -1,0 +1,19 @@
+---
+- include_role: name='software'
+
+- name: fstab | Make sure temp directories are mounted securely
+  blockinfile:
+    path: '/etc/fstab'
+    marker: "# {mark} Ansible: fstab role, tmp mount"
+    block: |
+      tmpfs   /tmp                            tmpfs   rw,noexec,nosuid,nodev                            0 0
+      tmpfs   /var/tmp                        tmpfs   rw,noexec,nosuid,nodev                            0 0
+      tmpfs   /dev/shm                        tmpfs   rw,noexec,nosuid,nodev                            0 0 
+      tmpfs   {{ user.home }}/.cache          tmpfs   rw,nosuid,nodev,uid=1000,gid=1000                 0 0
+
+- name: fstab | Add my hard drives
+  blockinfile:
+    path: '/etc/fstab'
+    marker: "# {mark} Ansible: fstab role, HDD mount"
+    block: |
+      {{ fstab_mounts }}

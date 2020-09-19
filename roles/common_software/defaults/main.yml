@@ -1,0 +1,27 @@
+packages:
+  pacman:
+    - 'amd-ucode'
+    - 'man-db'
+    - 'man-pages'
+    - 'openssh'
+    - 'wget'
+    - 'htop'
+    - 'bash-completion'
+    - 'ripgrep'
+    - 'fd'
+    - 'nmap'
+    - 'bc'
+    - 'git'
+    - 'go'
+    - 'strace'
+    - 'lsof'
+    - 'gvfs-mtp' # for android mounting support
+    - 'mtpfs'    # for android mounting support
+    - 'nnn'
+    - 'firefox'
+    - 'xed'
+    - 'zathura'
+    - 'mpv'
+    - 'file-roller'
+  aur:
+    - 'qview'

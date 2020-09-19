@@ -1,0 +1,8 @@
+---
+packages:
+  pacman:
+    - 'alsa-utils'
+    - 'pulseaudio'
+    - 'pulseaudio-alsa'
+    - 'pavucontrol'
+    - 'pasystray'

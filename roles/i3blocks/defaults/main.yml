@@ -1,0 +1,13 @@
+---
+packages:
+  common:
+    - 'i3blocks'
+
+    # Needed for my i3blocks
+    - 'sysstat'
+    - 'mpc'
+
+  pacman:
+    # Fonts
+    - 'ttf-hack'
+    - 'otf-font-awesome'

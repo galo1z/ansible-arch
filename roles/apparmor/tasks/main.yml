@@ -1,0 +1,11 @@
+---
+- include_role: name='software'
+
+- name: apparmor | Add kernel parameters
+  script: 'add_kernel_parameters.py /boot/loader/entries/arch.conf "apparmor=1 lsm=lockdown,yama,apparmor"'
+
+- name: apparmor | Enable apparmor service
+  systemd:
+    name: apparmor.service
+    enabled: yes
+

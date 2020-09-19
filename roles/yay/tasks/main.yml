@@ -1,0 +1,15 @@
+---
+- name: yay | Create user for yay
+  user:
+    name: 'aur_builder'
+    home: '/home/.aur_builder'
+
+- name: yay | Allow passwordless pacman for aur_builder
+  blockinfile:
+    path: /etc/sudoers
+    marker: '# {mark} Ansible managed: yay role'
+    create: yes
+    block: |
+      aur_builder ALL=(ALL) NOPASSWD:/bin/pacman
+
+- include_role: name='software'

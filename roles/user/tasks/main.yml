@@ -1,0 +1,20 @@
+---
+- include_role: name='software'
+
+- name: user | Create user
+  user:
+    name: '{{ user.name }}'
+
+- name: user | Allow sudo rights
+  blockinfile:
+    path: /etc/sudoers
+    marker: '# {mark} Ansible managed: user role'
+    block: |
+      {{ user.name }} ALL=(ALL) ALL
+    create: yes
+
+- name: user | Create .config directory
+  file:
+    path: '{{ user.home }}/.config'
+    state: directory
+  become_user: '{{ user.name }}'

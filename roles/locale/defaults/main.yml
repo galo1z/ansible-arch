@@ -1,0 +1,5 @@
+---
+locale:
+  name:           'en_US.utf8'
+  full_name: 'LANG=en_US.utf8'
+  keymap: 'us'

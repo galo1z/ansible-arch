@@ -1,0 +1,5 @@
+---
+- include_role: name='software'
+
+- name: my_hardening | Change umask to 027
+  shell: "sed -i 's/umask 022/umask 027/' /etc/profile"
