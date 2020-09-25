@@ -5,6 +5,7 @@
   file:
     state: directory
     path: '{{ user.home }}/Downloads'
+  become_user: '{{ user.name }}'
 
 - name: firefox | Download hardneded config
   get_url:

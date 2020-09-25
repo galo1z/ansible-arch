@@ -3,9 +3,12 @@ packages:
   common:
     - 'zsh'
     - 'git'
-    - 'fzf'
     - 'lsof'
     - 'xclip'
+  pacman:
+    - 'fzf'
+  apt:
+    - 'fzf'
 
 zsh:
   theme: pygmalion

@@ -3,6 +3,7 @@ packages:
   common:
     - 'neovim'
     - 'nodejs' # nvim CoC req
+  pacman:
     - 'yarn'   # nvim CoC req
   pip:
     - 'neovim'
