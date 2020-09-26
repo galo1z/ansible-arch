@@ -32,7 +32,7 @@ sgdisk --new 2::: --typecode 2:8304 --change-name 2:"MazaHaKa Linux root" "$devi
 mkfs.fat -F32 "$device""$efi_id"
 
 # Create filesystem on / (also check device for bad blocks)
-mkfs.nilfs2 -fc "$device""$root_id"
+mkfs.xfs -f "$device""$root_id"
 
 # Mount partitions
 mount "$device""$root_id" /mnt

@@ -5,7 +5,7 @@
 device='/dev/nvme0n1'
 efi_id='p1'
 root_id='p2'
-kernel='' # '-zen'/'-lts'/'-hardened' or empty if kernel is stanard
+kernel='-zen' # '-zen'/'-lts'/'-hardened' or empty if kernel is stanard
 net_dev='enp34s0'
 #use_wifi = true/false # TODO
 
@@ -32,7 +32,7 @@ sgdisk --new 2::: --typecode 2:8304 --change-name 2:"MazaHaKa Linux root" "$devi
 mkfs.fat -F32 "$device""$efi_id"
 
 # Create filesystem on / (also check device for bad blocks)
-mkfs.nilfs2 -fc "$device""$root_id"
+mkfs.xfs -f "$device""$root_id"
 
 # Mount partitions
 mount "$device""$root_id" /mnt
