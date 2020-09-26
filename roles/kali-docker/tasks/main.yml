@@ -1,0 +1,13 @@
+---
+#- include_role: name='software'
+- include_role: name='docker'
+
+- name: pihole-docker | Create and start pihole container
+  docker_container:
+    name: pihole-3
+    image: pihole/pihole
+    restart_policy: unless-stopped
+    network_mode: host
+    env:
+      #DNS1: '9.9.9.9'
+  tags: dock
