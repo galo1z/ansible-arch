@@ -1,4 +1,6 @@
 ---
 packages:
-  common:
+  pacman:
+    - 'tmux'
+  apt:
     - 'tmux'
