@@ -1,0 +1,41 @@
+---
+- block:
+  - name: min_software | Enable EPEL Repository on CentOS 8
+    dnf:
+      name: epel-release
+    when: 
+      - ansible_facts['distribution_major_version'] == '8'
+  
+  - name: min_software | Enable EPEL Repository on CentOS 7
+    yum:
+      name: epel-release
+    when:
+      - ansible_facts['distribution_major_version'] == '7'
+
+  - name: min_software | Enable ripgrep repo
+    yum_repository:
+      name: ripgrep
+      baseurl: 'https://download.copr.fedorainfracloud.org/results/carlwgeorge/ripgrep/epel-7-$basearch/'
+      description: 'Repo for ripgrep install'
+      #skip_if_unavailable: yes
+      gpgcheck: yes
+      gpgkey: 'https://download.copr.fedorainfracloud.org/results/carlwgeorge/ripgrep/pubkey.gpg'
+      repo_gpgcheck: no  
+  
+  - name: min_software | Install carg (for fd)
+    package:
+      name: 'cargo'
+  
+  - name: min_software | Install fd 
+    command: 'cargo install fd-find'
+
+  - name: min_software | Add cargo dir to PATH
+    blockinfile:
+      marker: '# {mark} Ansible managed: min_software role'
+      path: "~/.zshrc"
+      block: |
+        export PATH='{{ user.name }}/.cargo/bin:$PATH'
+  when:
+    - ansible_facts['os_family'] == 'RedHat'
+
+- include_role: name='software'

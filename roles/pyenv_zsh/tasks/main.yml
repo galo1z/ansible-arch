@@ -32,7 +32,6 @@
     blockinfile:
       marker: '# {mark} Ansible managed: pyenv role'
       path: "~/.zshrc"
-      create: yes
       block: |
         export PYENV_ROOT="$HOME/.pyenv"
         export PATH="$PYENV_ROOT/bin:$PATH"

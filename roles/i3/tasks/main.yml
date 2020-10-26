@@ -1,7 +1,7 @@
 ---
 - include_role: name='software'
 - include_role: name='xorg'
-  when: os == 'arch' 
+  #  when: os == 'arch' 
 
 - block:
     - name: i3 | Create directories

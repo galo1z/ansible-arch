@@ -23,7 +23,7 @@ wired_net:
 wireguard:
   priv_key: ''
   pub_key: ''
-  address: '' 
+  address: ''
   endpoint: ''
 
 firefox:

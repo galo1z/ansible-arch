@@ -1,10 +1,10 @@
 ---
 - name: Rock and roll!
-  hosts: localhost
-  connection: local
+  hosts: host1
+  connection: ssh
   become: yes
   vars:
-    os: 'arch'
+    #    ansible_python_interpreter: /usr/bin/python3
     user:
       name: 'root'
       home: '/root'
@@ -12,3 +12,5 @@
     - { role: 'zsh',              tags: 'zsh' }
     - { role: 'neovim',           tags: 'neovim' }
     - { role: 'tmux',             tags: 'tmux' }
+    - { role: 'min_software',     tags: 'min_software' }
+      

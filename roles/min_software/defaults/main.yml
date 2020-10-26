@@ -1,0 +1,14 @@
+packages:
+  common:
+    - 'wget'
+    - 'git'
+    - 'lsof'
+    - 'nnn'
+    - 'curl'
+    - 'ripgrep'
+
+  apt:
+    - 'fd'
+
+  pacman:
+    - 'fd'

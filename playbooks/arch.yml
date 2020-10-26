@@ -11,16 +11,16 @@
     - { role: 'pacman',               tags: 'pacman' }
     - { role: 'user',                 tags: 'user' }
     - { role: 'yay',                  tags: 'yay' }
-    - { role: 'custom-hardening',     tags: 'hardening' }
+      #    - { role: 'custom-hardening',     tags: 'hardening' }
     - { role: 'fstab',                tags: 'fstab' }
     - { role: 'common_software',      tags: 'common' }
-    - { role: 'extra_software',       tags: 'extra' }
+      #    - { role: 'extra_software',       tags: 'extra' }
     - { role: 'fonts',                tags: 'fonts' }
 
     - { role: 'wired-network',        tags: 'network' }
-    - { role: 'pihole',               tags: 'pihole' }
+      #    - { role: 'pihole',               tags: 'pihole' }
     - { role: 'wireguard',            tags: 'wireguard' }
-    - { role: 'iptables',             tags: 'iptables' }
+      #    - { role: 'iptables',             tags: 'iptables' }
 
     - { role: 'i3',                   tags: 'i3' }
     - { role: 'i3blocks',             tags: 'i3blocks' }
@@ -37,7 +37,7 @@
     - { role: 'virtualbox',           tags: 'virtualbox' }
 
     - { role: 'mimes',                tags: 'mimes' }
-    - { role: 'apparmor',             tags: 'apparmor' }
+      #    - { role: 'apparmor',             tags: 'apparmor' }
 
 # NOT READY:
 #    - { role: 'dev-sec.os-hardening', tags: 'hardening' }
