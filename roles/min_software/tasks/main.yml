@@ -35,6 +35,15 @@
       path: "~/.zshrc"
       block: |
         export PATH='{{ user.name }}/.cargo/bin:$PATH'
+
+  - name: min_software | Download fzf git repo
+    git:
+      repo: 'https://github.com/junegunn/fzf.git'
+      dest: '{{user.home}}/.fzf'
+
+  - name: min_software | Install fzf
+    command: '~/.fzf/install --key-bindings --completion --update-rc'
+
   when:
     - ansible_facts['os_family'] == 'RedHat'
 

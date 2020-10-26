@@ -8,7 +8,10 @@
     user:
       name: 'root'
       home: '/root'
+      #name: 'user1'
+      #home: '/home/user1'
   roles:
+    - { role: 'user',             tags: 'user' }
     - { role: 'zsh',              tags: 'zsh' }
     - { role: 'neovim',           tags: 'neovim' }
     - { role: 'tmux',             tags: 'tmux' }
