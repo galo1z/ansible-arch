@@ -34,7 +34,7 @@
       marker: '# {mark} Ansible managed: min_software role'
       path: "~/.zshrc"
       block: |
-        export PATH="{{ user.name }}/.cargo/bin:$PATH"
+        export PATH="{{ user.home }}/.cargo/bin:$PATH"
 
   - name: min_software | Download fzf git repo
     git:
