@@ -1,17 +1,5 @@
 ---
 - block:
-  - name: min_software | Enable EPEL Repository on CentOS 8
-    dnf:
-      name: epel-release
-    when: 
-      - ansible_facts['distribution_major_version'] == '8'
-  
-  - name: min_software | Enable EPEL Repository on CentOS 7
-    yum:
-      name: epel-release
-    when:
-      - ansible_facts['distribution_major_version'] == '7'
-
   - name: min_software | Enable ripgrep repo
     yum_repository:
       name: ripgrep
@@ -31,8 +19,8 @@
 
   - name: min_software | Add cargo dir to PATH
     blockinfile:
-      marker: '# {mark} Ansible managed: min_software role'
-      path: "~/.zshrc"
+      marker: '# {mark} Ansible managed: min_software role, 1'
+      path: "{{ user.home }}/.zshrc"
       block: |
         export PATH="{{ user.home }}/.cargo/bin:$PATH"
 
@@ -42,9 +30,17 @@
       dest: '{{user.home}}/.fzf'
 
   - name: min_software | Install fzf
-    command: '~/.fzf/install --key-bindings --completion --update-rc'
+    command: '{{ user.home }}/.fzf/install --key-bindings --completion --update-rc'
 
   when:
     - ansible_facts['os_family'] == 'RedHat'
+
+- name: min_software | Add fd alias for Debian-based
+  blockinfile:
+    marker: '# {mark} Ansible managed: min_software role, 2'
+    path: "{{ user.home }}/.zshrc"
+    block: |
+      alias fd='fdfind'
+  when: ansible_facts['os_family'] == 'Debian' or ansible_facts['os_family'] == 'Ubuntu'
 
 - include_role: name='software'

@@ -8,7 +8,7 @@ packages:
     - 'ripgrep'
 
   apt:
-    - 'fd'
+    - 'fd-find'
 
   pacman:
     - 'fd'

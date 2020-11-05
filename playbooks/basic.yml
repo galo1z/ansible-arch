@@ -4,14 +4,19 @@
   connection: ssh
   become: yes
   vars:
-    #    ansible_python_interpreter: /usr/bin/python3
+    #ansible_python_interpreter: /usr/bin/python3
+    #become_method: sudo
     user:
-      name: 'root'
-      home: '/root'
+      #name: 'centos'
+      #home: '/home/centos'
       #name: 'user1'
       #home: '/home/user1'
+      name: 'root'
+      home: '/root'
+
   roles:
-    - { role: 'user',             tags: 'user' }
+    #    - { role: 'user',             tags: 'user' }
+    - { role: 'epel',             tags: 'epel' }
     - { role: 'zsh',              tags: 'zsh' }
     - { role: 'neovim',           tags: 'neovim' }
     - { role: 'tmux',             tags: 'tmux' }

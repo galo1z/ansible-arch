@@ -31,7 +31,10 @@ shell:
     alias pacman='sudo pacman'
     alias tmux='tmux -2' # Needed for 256 color tmux to work
     alias vim='nvim'
+    alias ls='ls -l -F -h -t --author --time-style=long-iso --group-directories-first --color=always'
+    alias ipa='ip -br a'
   exports: | 
     export PAGER='less'
     export EDITOR='nvim'
     export TERM='xterm-256color'
+    export DISABLE_LS_COLORS='true' #Disable zsh to override my ls alias

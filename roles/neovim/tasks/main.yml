@@ -22,13 +22,13 @@
     - name: neovim | Download dein
       get_url:
         url: 'https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh'
-        dest: '~/dein_installer.sh'
+        dest: '{{ user.home }}/dein_installer.sh'
       
     - name: neovim | Install dein
-      shell: '/bin/sh ~/dein_installer.sh ~/.local/share/dein'
+      shell: '/bin/sh {{ user.home }}/dein_installer.sh {{ user.home }}/.local/share/dein'
 
     - name: neovim | Delete dein installation script
       file:
         state: absent
-        dest: '~/dein_installer.sh'
+        dest: '{{ user.home }}/dein_installer.sh'
   become_user: '{{ user.name }}'  

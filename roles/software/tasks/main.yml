@@ -22,7 +22,9 @@
     when: packages.pip_sys is defined
 
   - name: software | Install software with pip (for user only)
-    pip: name={{ packages.pip }}
+    pip:
+        name: '{{ packages.pip }}'
+        extra_args: --user
     when: packages.pip is defined
     become_user: '{{ user.name }}'
   

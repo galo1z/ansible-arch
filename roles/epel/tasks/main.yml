@@ -1,0 +1,15 @@
+---
+- block:
+  - name: epel | Enable EPEL Repository on CentOS 8
+    dnf:
+      name: epel-release
+    when:
+      - ansible_facts['distribution_major_version'] == '8'
+
+  - name: epel | Enable EPEL Repository on CentOS 7
+    yum:
+      name: epel-release
+    when:
+      - ansible_facts['distribution_major_version'] == '7'
+  when:
+    - ansible_facts['os_family'] == 'RedHat'

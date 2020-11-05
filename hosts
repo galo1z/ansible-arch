@@ -1,2 +1,0 @@
-#kali ansible_host=192.168.0.70
-host1 ansible_host=192.168.0.16
