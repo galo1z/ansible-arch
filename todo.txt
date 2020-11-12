@@ -4,3 +4,4 @@
 . make link from vi and vim to nvim, remove alias from zsh
 . add include to zshrc in zsh role and update every role that adding info to zshrc (zsh role run removes other roles changes to zshrc)
 . less role (search case-agnostic, maby colors and some stuff)
+. https://github.com/lzap/systemd-shortcuts

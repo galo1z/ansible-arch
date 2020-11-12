@@ -4,6 +4,10 @@
   connection: local
   become: yes
   become_method: su
+  vars:
+    user:
+      name: 'root'
+      home: '/root'
   roles:
     - { role: 'hostname',             tags: 'hostname' }
     - { role: 'locale',               tags: 'locale' }
@@ -25,7 +29,7 @@
     - { role: 'i3',                   tags: 'i3' }
     - { role: 'i3blocks',             tags: 'i3blocks' }
     - { role: 'zsh',                  tags: 'zsh' }
-    - { role: 'neovim',               tags: 'neovim' }
+    - { role: 'nvim',                 tags: 'nvim' }
     - { role: 'tmux',                 tags: 'tmux' }
     - { role: 'thunar',               tags: 'thunar' }
     - { role: 'zathura',              tags: 'zathura' }

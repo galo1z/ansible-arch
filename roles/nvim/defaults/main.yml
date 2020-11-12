@@ -3,9 +3,13 @@ packages:
   common:
     - 'neovim'
     - 'nodejs' # nvim CoC req
+    - 'clang' # nvim CoC req ???
   pacman:
     - 'yarn'   # nvim CoC req
   pip:
     - 'neovim'
     - 'jedi'   # nvim CoC req
     - 'pep8'   # nvim CoC req
+    - 'autopep8' # nvim CoC req
+    
+dein_config_dir: '{{ user.home }}/.config/dein'

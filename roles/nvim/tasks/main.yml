@@ -1,0 +1,38 @@
+---
+- include_role: name='software'
+
+- block:
+    - name: nvim | Create dirs for plugins
+      file:
+        state: directory
+        path: '{{ user.home }}/.config/nvim/{{ item }}'
+      loop:  
+        - 'colors'
+
+    - name: nvim | Install my colorscheme
+      copy:
+        src: hybrid_fixed.vim
+        dest: '{{ user.home}}/.config/nvim/colors/'
+
+    - name: nvim | Create init.vim config
+      template:
+        src: init.vim.j2
+        dest: '{{ user.home }}/.config/nvim/init.vim'
+
+    - name: nvim | Download dein installer
+      get_url:
+        url: https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh
+        dest: '{{ user.home }}/dein_installer.sh'
+      notify:
+        - nvim | Delete dein_installer.sh
+      
+    - name: nvim | Install dein
+      command: 'sh {{ user.home }}/dein_installer.sh {{ dein_config_dir }}'
+
+  become_user: '{{ user.name }}'
+
+- name: nvim | Create link vim -> nvim
+  file:
+    state: link
+    src: /usr/bin/nvim
+    dest: /usr/bin/vim

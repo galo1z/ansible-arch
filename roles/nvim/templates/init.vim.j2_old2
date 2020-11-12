@@ -6,13 +6,6 @@ set background=dark
 set nobackup
 set noswapfile
 set nowritebackup
-"Auto indent - DISABLED
-"set ai
-"set si
-filetype indent off
-set noautoindent
-set nocindent
-set nosmartindent
 "Wrap lines
 set wrap
 "Enable mouse support
@@ -31,7 +24,7 @@ set cursorline
 set number
 set relativenumber
 "Increase the undo limit
-set history=50
+set history=100
 "Use spaces instead of tabs
 set softtabstop=2
 set tabstop=2
@@ -39,9 +32,12 @@ set shiftwidth=2
 set expandtab
 "Enables graphical menu of the matches in shell
 set wildmenu
-"Highlight when exceeded 120 symbols in string
+"Highlight 120th symbol
 set colorcolumn=120
 highlight ColorColumn ctermbg=darkgray
+" Smart auto-indent
+set smartindent
+filetype indent off
 
 "Stop hightlighting of founded items by pressing Ctr+L
 nnoremap <C-L> :nohlsearch<CR><C-L>
@@ -55,8 +51,14 @@ augroup rungroup
     autocmd BufRead,BufNewFile *.c  nnoremap <F5> :w <cr> :!gcc % -o %< && ./%< <cr>
 augroup END
 
-"-------------"----------------------------------
+"----------------------------------
 " Misc
+"----------------------------------
+
+
+
+"----------------------------------
+" Notes 
 "----------------------------------
 "No audoindent on pasted text
 "set paste " THIS WILL CONFLICT WITH tab settings (tabstop,shiftwidth,..)

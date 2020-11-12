@@ -1,0 +1,5 @@
+---
+- name: nvim | Delete dein_installer.sh
+  file:
+    state: absent
+    dest: '{{ user.home }}/dein_installer.sh'
