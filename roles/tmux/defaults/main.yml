@@ -1,6 +1,11 @@
 ---
 packages:
+  common:
+    - 'net-tools'
+    - 'gawk'
+
   pacman:
     - 'tmux'
+
   apt:
     - 'tmux'

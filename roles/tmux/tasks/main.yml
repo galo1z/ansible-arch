@@ -1,11 +1,12 @@
 ---
 - include_role: name='software'
+
 - name: tmux | Check if tmux is already installed
   stat:
     path: /usr/bin/tmux
   register: tmuxExecutable
 
-- block:
+- block: # Install in RedHat
   - name: tmux | Install dependencies
     package:
       name: '{{ item }}'
@@ -18,7 +19,7 @@
 
   - name: tmux | Download tmux from git
     git:
-      repo: 'https://github.com/tmux/tmux'
+      repo: https://github.com/tmux/tmux
       dest: '{{ user.home }}/.tmux_source'
 
   - name: tmux | Cofigure, make and place to /usr/bin
@@ -40,6 +41,6 @@
   
   - name: tmux | Install tpm plguin manager
     git:
-      repo: 'https://github.com/tmux-plugins/tpm'
+      repo: https://github.com/tmux-plugins/tpm
       dest: '{{ user.home }}/.tmux/plugins/tpm'
   become_user: '{{ user.name }}'

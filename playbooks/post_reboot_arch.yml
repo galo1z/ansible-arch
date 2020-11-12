@@ -20,10 +20,12 @@
     - name: post | Show commands to finish configuration
       debug:
         msg: |
-          #  EXECUTE THIS IN NVIM:
+          #  EXECUTE THIS IN NVIM (load and activating plugins):
           #  call dein#install()
           #  CocInstall coc-clangd
           #  CocInstall coc-python 
+          #  
+          #  Start tmux and enter Ctrl+b then Sift+I (load plugins)
           #
           #  EXECUTE THIS IN SHELL:
           #  systemctl --user enable mpd && systemctl --user start mpd 

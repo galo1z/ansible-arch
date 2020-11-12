@@ -73,6 +73,7 @@ if dein#load_state('{{ dein_config_dir }}')
     "call dein#add('frazrepo/vim-rainbow')
     call dein#add('kien/rainbow_parentheses.vim')
     call dein#add('neoclide/coc.nvim', { 'merged': 0 })
+    call dein#add('mhinz/vim-signify')
   call dein#end()
   call dein#save_state()
 endif
@@ -132,6 +133,8 @@ let g:rbpt_colorpairs = [
 " The CTRL-W is the mnemonic for “window” command, and the j is analogous to Vim's j command
 
 " Use <c-^>/<c-6> to switch to the previous buffer
+
+" Default leader-key is \
 "----------------------------------
 " TextEdit might fail if hidden is not set.
 set hidden
@@ -141,7 +144,7 @@ set cmdheight=4
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
-set updatetime=300
+set updatetime=100
 
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
