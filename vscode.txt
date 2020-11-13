@@ -1,0 +1,5 @@
+vscjava.vscode-java-debug
+redhat.java
+vscjava.vscode-maven
+
+ms-azuretools.vscode-docker

@@ -31,7 +31,7 @@
   - name: Add pyenv to the load path
     blockinfile:
       marker: '# {mark} Ansible managed: pyenv role'
-      path: "~/.zshrc"
+      path: "~/.zshrc_extra"
       block: |
         export PYENV_ROOT="$HOME/.pyenv"
         export PATH="$PYENV_ROOT/bin:$PATH"

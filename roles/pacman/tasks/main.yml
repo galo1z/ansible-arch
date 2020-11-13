@@ -3,3 +3,11 @@
 
 - name: pacman | Sort mirrors by reflector
   shell: reflector --threads 20 --latest 20 -p https --sort rate --save /etc/pacman.d/mirrorlist
+
+- name: pacman | Add alias pacman = sudo pacman
+  blockinfile:
+    marker: '# {mark} Ansible managed: pacman role'
+    path: "{{ user.home }}/.zshrc_extra"
+    block: |
+      alias pacman='sudo pacman'
+  become_user: '{{ user.name }}'

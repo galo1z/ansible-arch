@@ -7,6 +7,11 @@
       src: zshrc.j2
       dest: '{{ user.home }}/.zshrc'
   
+  - name: zsh | Create zsh extra config file
+    file:
+      state: touch
+      path: '{{ user.home }}/.zshrc_extra'
+
   - name: zsh | Clone oh-my-zsh repository
     git:
       repo: https://github.com/robbyrussell/oh-my-zsh.git
