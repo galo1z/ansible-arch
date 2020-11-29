@@ -4,12 +4,10 @@
   connection: local
   become: yes
   become_method: su
-  vars:
-    virtualbox_installed: 'False'
 
   roles:
     - { role: 'firefox',              tags: 'firefox' }
-    - { role: 'firejail',             tags: 'firejail' }
+#    - { role: 'firejail',             tags: 'firejail' }
 #    - { role: 'rkhunter',             tags: 'rkhunter' } #TODO
 
   tasks:
@@ -26,9 +24,6 @@
           #  CocInstall coc-python 
           #  
           #  Start tmux and enter Ctrl+b then Sift+I (load plugins)
-          #
-          #  EXECUTE THIS IN SHELL:
-          #  systemctl --user enable mpd && systemctl --user start mpd 
           
     - name: Show ascii art to get attention
       debug:

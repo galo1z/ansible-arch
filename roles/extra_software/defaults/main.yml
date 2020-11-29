@@ -5,14 +5,14 @@ packages:
     - 'qbittorrent'
     - 'libreoffice'
     - 'fbreader'
-    - 'fontforge'
+#    - 'fontforge'
     - 'chromium'
     - 'torbrowser-launcher'
   pip:
     - 'youtube-dl'
   aur:
     - 'bitwarden'
-    - 'etcher'
-    - 'woeusb'
+#    - 'etcher'
+#    - 'woeusb'
 #    - 'standardnotes-desktop'
     - 'grv'

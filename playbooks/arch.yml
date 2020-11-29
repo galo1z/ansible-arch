@@ -8,24 +8,20 @@
 #    user:
 #      name: 'root'
 #      home: '/root'
+#
   roles:
     - { role: 'hostname',             tags: 'hostname' }
     - { role: 'locale',               tags: 'locale' }
     - { role: 'time',                 tags: 'time' }
-    - { role: 'pacman',               tags: 'pacman' }
     - { role: 'user',                 tags: 'user' }
+    - { role: 'pacman',               tags: 'pacman' }
     - { role: 'yay',                  tags: 'yay' }
-      #    - { role: 'custom-hardening',     tags: 'hardening' }
     - { role: 'fstab',                tags: 'fstab' }
     - { role: 'common_software',      tags: 'common' }
-      #    - { role: 'extra_software',       tags: 'extra' }
+    - { role: 'extra_software',       tags: 'extra' }
     - { role: 'fonts',                tags: 'fonts' }
-
     - { role: 'wired-network',        tags: 'network' }
-      #    - { role: 'pihole',               tags: 'pihole' }
     - { role: 'wireguard',            tags: 'wireguard' }
-      #    - { role: 'iptables',             tags: 'iptables' }
-
     - { role: 'i3',                   tags: 'i3' }
     - { role: 'i3blocks',             tags: 'i3blocks' }
     - { role: 'zsh',                  tags: 'zsh' }
@@ -39,9 +35,47 @@
     - { role: 'sound',                tags: 'sound' }
     - { role: 'mpd',                  tags: 'mpd' }
     - { role: 'virtualbox',           tags: 'virtualbox' }
-
     - { role: 'mimes',                tags: 'mimes' }
-      #    - { role: 'apparmor',             tags: 'apparmor' }
+    - { role: 'apparmor',             tags: 'apparmor' }
+      
+  post_tasks:
+    - name: Fix access rights for files in home dir
+      shell: 'chmod -R go-rwx /home/{{ user.name }}/'
+      tags: access
+
+    - name: post | Show commands to finish configuration
+      debug:
+        msg: |
+          #  EXECUTE THIS IN NVIM (load and activating plugins):
+          #  call dein#install()
+          #  CocInstall coc-clangd
+          #  CocInstall coc-python
+          #
+          #  Start tmux and enter Ctrl+b then Sift+I (load plugins)
+
+    - name: Show ascii art to get attention
+      debug:
+        msg: |
+          #                   -`
+          #                  .o+`
+          #                 `ooo/
+          #                `+oooo:
+          #               `+oooooo:
+          #               -+oooooo+:
+          #             `/:-:++oooo+:
+          #            `/++++/+++++++:
+          #           `/++++++++++++++:
+          #          `/+++ooooooooooooo/`
+          #         ./ooosssso++osssssso+`
+          #        .oossssso-````/ossssss+`
+          #       -osssssso.      :ssssssso.
+          #      :osssssss/        osssso+++.
+          #     /ossssssss/        +ssssooo/-
+          #   `/ossssso+/:-        -:/+osssso+-
+          #  `+sso+:-`                 `.-/+oso:
+          # `++:.                           `-/+/
+          # .`                                 `
+          #     MANUALLY ENTER COMMANDS ABOVE
 
 # NOT READY:
 #    - { role: 'dev-sec.os-hardening', tags: 'hardening' }
@@ -51,3 +85,6 @@
 #
 # NOT USED:
 # pyenv_zsh
+      #    - { role: 'custom-hardening',     tags: 'hardening' }
+      #    - { role: 'pihole',               tags: 'pihole' }
+      #    - { role: 'iptables',             tags: 'iptables' }

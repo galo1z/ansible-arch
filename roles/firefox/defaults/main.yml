@@ -2,3 +2,5 @@
 packages:
   common:
     - 'firefox'
+
+relaxed_version: True
