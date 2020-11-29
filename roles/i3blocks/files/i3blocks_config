@@ -13,20 +13,6 @@ separator_block_width=15
 interval=2
 signal=10
 
-[mpd_prev]
-command=mpc prev 1>/dev/null; echo
-interval=once
-label=
-
-[mpd_control]
-command=/home/user1/.config/i3blocks/music_player.sh
-interval=once
-
-[mpd_next]
-command=mpc next 1>/dev/null; echo
-interval=once
-label=
-
 ### RESOURCES
 
 [root]
