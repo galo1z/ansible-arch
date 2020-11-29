@@ -4,10 +4,10 @@
   connection: local
   become: yes
   become_method: su
-  vars:
-    user:
-      name: 'root'
-      home: '/root'
+#  vars:
+#    user:
+#      name: 'root'
+#      home: '/root'
   roles:
     - { role: 'hostname',             tags: 'hostname' }
     - { role: 'locale',               tags: 'locale' }

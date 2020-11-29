@@ -41,7 +41,7 @@
           copy:
             dest: '{{ user.home }}/.xinitrc'
             content: |
-              exec ~/.config/i3start.sh
+              exec {{ user.home }}/.config/i3start.sh
 
         - name: i3 | Enable autostart of i3 on login
           copy:

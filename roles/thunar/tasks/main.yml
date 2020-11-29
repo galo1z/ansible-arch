@@ -7,13 +7,13 @@
       state: directory
       path: '{{ item }}'
     with_items:
-      - '~/.config/xfce4/xfconf/xfce-perchannel-xml'
-      - '~/.config/Thunar'
+      - '{{ user.home }}/.config/xfce4/xfconf/xfce-perchannel-xml'
+      - '{{ user.home }}/.config/Thunar'
   
   - name: thunar | Create config
     copy:
       src: 'thunar.xml'
-      dest: '~/.config/xfce4/xfconf/xfce-perchannel-xml/'
+      dest: '{{ user.home }}/.config/xfce4/xfconf/xfce-perchannel-xml/'
 
   - name: thunar | Create config with custom actions
     copy:

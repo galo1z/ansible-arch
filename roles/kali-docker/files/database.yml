@@ -1,0 +1,9 @@
+production:
+ adapter: postgresql
+ database: msf
+ username: msf
+ password: NHWRHDDBhcGnO7OvxskXFt
+ host: localhost
+ port: 33333
+ pool: 5
+ timeout: 5

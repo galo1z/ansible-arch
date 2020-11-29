@@ -1,0 +1,35 @@
+---
+- include_role: name='software'
+
+- block:
+    - name: Set up exports and aliases 
+      blockinfile:
+        marker: '# {mark} Ansible managed: mc role'
+        path: "{{ user.home }}/.zshrc_extra"
+        block: |
+          export EDITOR='{{ user.home }}/.config/EDITOR.sh'
+          export MC_XDG_OPEN=~/bin/nohup-open
+          alias mc=". /usr/lib/mc/mc-wrapper.sh"
+
+    - name: Create EDITOR.sh script
+      file:
+        path: '{{ user.home }}/.config/EDITOR.sh'
+        mode: 0700
+        content: |
+          #!/bin/sh
+          /usr/bin/tmux new-window "/usr/bin/nvim $1"
+
+    - name: Create nohup-opens.sh cript
+      file:
+        path: '{{ user.home }}/.config/mc/nohup-open.sh'
+        mode: 0700
+        content: |
+          #!/bin/sh
+          nohup xdg-open "$@" &
+
+    - name: Crate mc config
+      copy:
+        src: ini
+        dest: '{{ user.home }}/.config/mc/ini'
+
+  become_user: '{{ user.name }}'
