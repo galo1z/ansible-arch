@@ -15,12 +15,6 @@
         src: i3blocks_config
         dest: '{{ user.home }}/.config/i3blocks/config'
 
-    - name: i3blocks | Create i3blocks config
-      copy:
-        src: music_player.sh
-        dest: '{{ user.home }}/.config/i3blocks/music_player.sh'
-        mode: 0700
-
     - name: i3blocks | Download volume module
       get_url:
         url: 'https://raw.githubusercontent.com/vivien/i3blocks-contrib/master/volume/volume'

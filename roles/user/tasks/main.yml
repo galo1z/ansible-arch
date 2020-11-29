@@ -8,13 +8,19 @@
 - name: user | Allow sudo rights
   blockinfile:
     path: /etc/sudoers
-    marker: '# {mark} Ansible managed: user role'
+    marker: '# {mark} Ansible managed: user role for {{ user.name }}'
     block: |
       {{ user.name }} ALL=(ALL) ALL
-    create: yes
+  when: user.name != 'root'
 
 - name: user | Create .config directory
   file:
     path: '{{ user.home }}/.config'
     state: directory
+  become_user: '{{ user.name }}'
+
+- name: user | Create .zshrc_extra
+  file:
+    path: '{{ user.home }}/.zshrc_extra'
+    state: touch
   become_user: '{{ user.name }}'

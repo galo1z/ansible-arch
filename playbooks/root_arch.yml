@@ -1,0 +1,14 @@
+---
+- name: Rock and roll!
+  hosts: localhost
+  become: yes
+  vars:
+    user:
+      name: 'root'
+      home: '/root'
+
+  roles:
+    - { role: 'user',             tags: 'user' }
+    - { role: 'zsh',              tags: 'zsh' }
+    - { role: 'nvim',           tags: 'neovim' }
+    - { role: 'tmux',             tags: 'tmux' }
