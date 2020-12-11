@@ -1,4 +1,6 @@
 ---
+- include_role: name='cargo'
+
 - block:
   - name: min_software | Enable ripgrep repo
     yum_repository:
@@ -10,19 +12,8 @@
       gpgkey: 'https://download.copr.fedorainfracloud.org/results/carlwgeorge/ripgrep/pubkey.gpg'
       repo_gpgcheck: no  
   
-  - name: min_software | Install carg (for fd)
-    package:
-      name: 'cargo'
-  
-  - name: min_software | Install fd 
+  - name: min_software | Install fd using cargo
     command: 'cargo install fd-find'
-
-  - name: min_software | Add cargo dir to PATH
-    blockinfile:
-      marker: '# {mark} Ansible managed: min_software role, 1'
-      path: "{{ user.home }}/.zshrc_extra"
-      block: |
-        export PATH="{{ user.home }}/.cargo/bin:$PATH"
 
   - name: min_software | Download fzf git repo
     git:
@@ -31,7 +22,6 @@
 
   - name: min_software | Install fzf
     command: '{{ user.home }}/.fzf/install --key-bindings --completion --update-rc'
-
   when:
     - ansible_facts['os_family'] == 'RedHat'
 

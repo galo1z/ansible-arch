@@ -1,7 +1,11 @@
 ---
 packages:
-  common:
-    - 'alacritty'
-
   pacman:
+    - 'alacritty'
     - 'ttf-hack'
+  apt:
+    - cmake
+    - xclip
+    - libfreetype6-dev
+    - libfontconfig1-dev
+    - libxcb-composite0-dev

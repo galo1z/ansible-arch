@@ -19,12 +19,12 @@
         url: 'https://w.wallhaven.cc/full/6k/wallhaven-6k1dj7.jpg'
         dest: '{{ user.home }}/.config/wall.jpg'
 
-    - block:
-        - name: i3 | Create i3 config
-          copy:
-            src: i3_config
-            dest: '{{ user.home }}/.config/i3/config'
+    - name: i3 | Create i3 config
+      copy:
+        src: i3_config
+        dest: '{{ user.home }}/.config/i3/config'
 
+    - block:
         - name: i3 | Create i3start script
           copy:
             src: i3start.sh

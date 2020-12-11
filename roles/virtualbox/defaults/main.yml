@@ -1,8 +1,16 @@
 ---
 packages:
+  common:
+    - virtualbox
+
   pacman:
-    - 'virtualbox'
-    - 'virtualbox-guest-iso'
+    - virtualbox-guest-iso
+
+  apt:
+# TODO; needs to be installed manually?
+    #- virtualbox-ext-pack
+    - virtualbox-guest-additions-iso
+
   aur:
-    - 'virtualbox-ext-oracle'
+    - virtualbox-ext-oracle
 

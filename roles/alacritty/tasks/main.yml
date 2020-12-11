@@ -1,5 +1,6 @@
 ---
 - include_role: name='software'
+- include_role: name='cargo'
 
 - block:
   - name: alacritty | Create config directory
@@ -12,3 +13,15 @@
       src: alacritty.yml
       dest: '{{ user.home }}/.config/alacritty/alacritty.yml'
   become_user: '{{ user.name }}'
+
+#TODO: create check that alacritty does not exist already
+
+- name: alacritty | Install alacritty using cargo
+  command: cargo install alacritty
+  when: ansible_facts['os_family'] == 'Debian' or ansible_facts['os_family'] == 'Ubuntu'
+  become_user: '{{ user.name }}'
+
+#- block:
+#  - name: 
+#
+#  when: os == debian

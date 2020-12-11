@@ -1,4 +1,5 @@
 ---
 packages:
-  pacman:
+  #pacman:
+  common:
     - 'wireguard-tools'

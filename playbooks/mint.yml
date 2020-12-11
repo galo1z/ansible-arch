@@ -10,17 +10,15 @@
 #      home: '/root'
 #
   roles:
-    - { role: 'hostname',             tags: 'hostname' }
-    - { role: 'locale',               tags: 'locale' }
-    - { role: 'time',                 tags: 'time' }
+#    - { role: 'hostname',             tags: 'hostname' }
+#    - { role: 'locale',               tags: 'locale' }
+#    - { role: 'time',                 tags: 'time' }
     - { role: 'user',                 tags: 'user' }
-    - { role: 'pacman',               tags: 'pacman' }
-    - { role: 'yay',                  tags: 'yay' }
-    - { role: 'fstab',                tags: 'fstab' }
+#    - { role: 'fstab',                tags: 'fstab' }
     - { role: 'common_software',      tags: 'common' }
     - { role: 'extra_software',       tags: 'extra' }
-    - { role: 'fonts',                tags: 'fonts' }
-    - { role: 'wired-network',        tags: 'network' }
+#    - { role: 'fonts',                tags: 'fonts' }
+#    - { role: 'wired-network',        tags: 'network' }
     - { role: 'wireguard',            tags: 'wireguard' }
     - { role: 'i3',                   tags: 'i3' }
     - { role: 'i3blocks',             tags: 'i3blocks' }
@@ -30,22 +28,21 @@
     - { role: 'thunar',               tags: 'thunar' }
     - { role: 'zathura',              tags: 'zathura' }
     - { role: 'typora',               tags: 'typora' }
-    - { role: 'alacritty',            tags: 'alacritty' }
-    - { role: 'bluetooth',            tags: 'bluetooth' }
-    - { role: 'sound',                tags: 'sound' }
+    - { role: 'alacritty',            tags: 'alacritty','terminal' }
+#    - { role: 'bluetooth',            tags: 'bluetooth' }
+#    - { role: 'sound',                tags: 'sound' }
     - { role: 'mpd',                  tags: 'mpd' }
     - { role: 'virtualbox',           tags: 'virtualbox' }
     - { role: 'firefox',              tags: 'firefox' }
-    - { role: 'mimes',                tags: 'mimes' }
-    - { role: 'apparmor',             tags: 'apparmor' }
-
-    - { role: 'wifi-network',         tags: 'wifi' }
+#    - { role: 'mimes',                tags: 'mimes' }
+#    - { role: 'apparmor',             tags: 'apparmor' }
+#    - { role: 'wifi-network',         tags: 'wifi' }
     
       
   post_tasks:
-    - name: Fix access rights for files in home dir
-      shell: 'chmod -R go-rwx /home/{{ user.name }}/'
-      tags: access
+  #  - name: Fix access rights for files in home dir
+  #    shell: 'chmod -R go-rwx /home/{{ user.name }}/'
+  #    tags: access
 
     - name: post | Show commands to finish configuration
       debug:

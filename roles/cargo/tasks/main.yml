@@ -1,0 +1,11 @@
+---
+- name: cargo | Install cargo
+  package:
+    name: 'cargo'
+
+- name: cargo | Add cargo dir to PATH
+  blockinfile:
+    marker: '# {mark} Ansible managed: min_software role, 1'
+    path: "{{ user.home }}/.zshrc_extra"
+    block: |
+      export PATH="{{ user.home }}/.cargo/bin:$PATH"

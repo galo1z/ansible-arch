@@ -4,7 +4,7 @@
     package: name=python3-pip
     when: 
       - packages.pip is defined
-      - ansible_os_family == "Debian"
+      - ansible_os_family == "Debian" or ansible_os_family == "Kali GNU/Linux" or ansible_facts['os_family'] == 'Ubuntu'
   
   - name: software | Make sure pip is installed if needed (arch or centos)
     package: name=python-pip
@@ -48,6 +48,6 @@
     package: name={{ item }}
     with_items: '{{ packages.apt }}'
     when: 
-      - ansible_os_family == "Debian" or ansible_os_family == "Kali GNU/Linux"
+      - ansible_os_family == "Debian" or ansible_os_family == "Kali GNU/Linux" or ansible_facts['os_family'] == 'Ubuntu'
       - packages.apt is defined
   tags: 'software'

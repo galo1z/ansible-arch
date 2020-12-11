@@ -1,11 +1,11 @@
 packages:
-  pacman:
+  #pacman:
+  apt:
     - 'telegram-desktop'
     - 'keepassxc'
     - 'qbittorrent'
     - 'libreoffice'
     - 'fbreader'
-#    - 'fontforge'
     - 'chromium'
     - 'torbrowser-launcher'
   pip:

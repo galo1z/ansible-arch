@@ -15,8 +15,14 @@
   when: relaxed_version != True
   changed_when: false
 
+- name: firefox | Place script to /tmp
+  copy:
+    src: comment_bad_options.py
+    dest: /tmp/
+  changed_when: false
+
 - name: firefox | Comment unwanted options from hardened config
-  script: 'comment_bad_options.py /tmp/user.js'
+  command: 'python3 /tmp/comment_bad_options.py /tmp/user.js'
   changed_when: false
 
 - name: firefox | Copy file with my custom options
@@ -29,9 +35,16 @@
   shell: 'cat /tmp/my_options.cfg >> /tmp/user.js'
   changed_when: false
 
-- name: firefox | Get profile folder name 
-  shell: 'ls -d {{ user.home }}/.mozilla/firefox/*.default-release'
-  register: ff_dir_name
+- name: firefox | Get profile folder name 1
+  shell:  ls -d /home/user1/.mozilla/firefox/*.default-release  | awk '{print $(NF)}'
+#  shell: 'ls -d {{ user.home }}/.mozilla/firefox/*.default-release | grep default-release'
+  register: ff_dir_name1
+  changed_when: false
+
+- name: firefox | Get profile folder name 2
+  shell:  ls -d /home/user1/.mozilla/firefox/*.default  | awk '{print $(NF)}' | grep -v release
+  #shell: 'ls -d {{ user.home }}/.mozilla/firefox/*.default  | grep default | grep -v release'
+  register: ff_dir_name2
   changed_when: false
 
 - name: firefox | Place user.js to default and custom profile
@@ -40,8 +53,10 @@
     src: /tmp/user.js
     dest: '{{ item }}'
   with_items:
-    - '{{ ff_dir_name.stdout }}'
-    - '/home/user1/.mozilla/firefox/{{ firefox.profile_dir}}'
+    - '{{ ff_dir_name1.stdout }}'
+    - '{{ ff_dir_name2.stdout }}'
+# TODO: if def:
+#    - '/home/user1/.mozilla/firefox/{{ firefox.profile_dir}}'
   become_user: '{{ user.name }}'
 
 - name: firefox | Create Downloads direcory

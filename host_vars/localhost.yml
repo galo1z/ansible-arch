@@ -26,5 +26,5 @@ wireguard:
   address: ''
   endpoint: ''
 
-firefox:
-  profile_dir: '1tflpthi.default'
+#firefox:
+#  profile_dir: '1tflpthi.default' #change me every new installation

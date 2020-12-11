@@ -1,22 +1,24 @@
 packages:
   pacman:
     - 'amd-ucode'
-    - 'man-db'
-    - 'man-pages'
     - 'openssh'
+    - 'fd'
+    - 'go'
+    - 'gvfs-mtp' # for android mounting support
+    - 'mtpfs'    # for android mounting support
+    - 'man-pages'
+
+  common:
+    - 'man-db'
     - 'wget'
     - 'htop'
     - 'bash-completion'
     - 'ripgrep'
-    - 'fd'
     - 'nmap'
     - 'bc'
     - 'git'
-    - 'go'
     - 'strace'
     - 'lsof'
-    - 'gvfs-mtp' # for android mounting support
-    - 'mtpfs'    # for android mounting support
     - 'nnn'
     - 'firefox'
     - 'xed'

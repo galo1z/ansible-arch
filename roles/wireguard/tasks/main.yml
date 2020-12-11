@@ -1,6 +1,10 @@
 ---
 - include_role: name='software'
 
+- name: wireguard | Install software for arch lts
+  pacman: name=wireguard-lts
+  when: kernel_name == 'lts' and ansible_os_family == "Archlinux"
+
 - name: wireguard | Create config
   template:
     src: 'vpn.conf.j2'
