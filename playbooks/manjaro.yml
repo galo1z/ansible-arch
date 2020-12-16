@@ -1,0 +1,70 @@
+---
+- name: Rock and roll!
+  hosts: localhost
+  connection: local
+  become: yes
+  become_method: su
+#  vars:
+#    user:
+#      name: 'root'
+#      home: '/root'
+#
+  roles:
+    - { role: 'user',                 tags: 'user' }
+      #    - { role: 'pacman',               tags: 'pacman' }
+    - { role: 'yay',                  tags: 'yay' }
+    - { role: 'fstab',                tags: 'fstab' }
+    - { role: 'common_software',      tags: 'common' }
+    - { role: 'extra_software',       tags: 'extra' }
+    - { role: 'wireguard',            tags: 'wireguard' }
+    - { role: 'i3',                   tags: 'i3' }
+    - { role: 'i3blocks',             tags: 'i3blocks' }
+    - { role: 'zsh',                  tags: 'zsh' }
+    - { role: 'nvim',                 tags: 'nvim' }
+    - { role: 'tmux',                 tags: 'tmux' }
+    - { role: 'thunar',               tags: 'thunar' }
+    - { role: 'zathura',              tags: 'zathura' }
+    - { role: 'typora',               tags: 'typora' }
+    - { role: 'alacritty',            tags: 'alacritty','terminal' }
+    - { role: 'bluetooth',            tags: 'bluetooth' }
+    - { role: 'mpd',                  tags: 'mpd' }
+#    - { role: 'virtualbox',           tags: 'virtualbox' }
+    - { role: 'firefox',              tags: 'firefox' }
+    
+      
+  post_tasks:
+
+    - name: post | Show commands to finish configuration
+      debug:
+        msg: |
+          #  EXECUTE THIS IN NVIM (load and activating plugins):
+          #  call dein#install()
+          #  CocInstall coc-clangd
+          #  CocInstall coc-python
+          #
+          #  Start tmux and enter Ctrl+b then Sift+I (load plugins)
+
+    - name: Show ascii art to get attention
+      debug:
+        msg: |
+          #                   -`
+          #                  .o+`
+          #                 `ooo/
+          #                `+oooo:
+          #               `+oooooo:
+          #               -+oooooo+:
+          #             `/:-:++oooo+:
+          #            `/++++/+++++++:
+          #           `/++++++++++++++:
+          #          `/+++ooooooooooooo/`
+          #         ./ooosssso++osssssso+`
+          #        .oossssso-````/ossssss+`
+          #       -osssssso.      :ssssssso.
+          #      :osssssss/        osssso+++.
+          #     /ossssssss/        +ssssooo/-
+          #   `/ossssso+/:-        -:/+osssso+-
+          #  `+sso+:-`                 `.-/+oso:
+          # `++:.                           `-/+/
+          # .`                                 `
+          #     MANUALLY ENTER COMMANDS ABOVE
+

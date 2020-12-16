@@ -7,6 +7,8 @@ packages:
     - 'gvfs-mtp' # for android mounting support
     - 'mtpfs'    # for android mounting support
     - 'man-pages'
+    - 'binutils' # need on manjaro
+    - 'base-devel' # manjaro
 
   common:
     - 'man-db'

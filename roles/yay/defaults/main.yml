@@ -2,5 +2,6 @@
 packages:
   pacman:
     - 'sudo'
-  aur:
-    - 'yay'
+    - 'yay' #only manjaro?
+      #  aur:
+          #    - 'yay'

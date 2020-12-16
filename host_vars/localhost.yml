@@ -3,8 +3,8 @@ user:
   name: 'user1'
   home: '/home/user1'
 
-is_kernel_default: 'False' #True
-kernel_name: 'lts'
+is_kernel_default: 'True'
+kernel_name: '' #lts
 
 fstab_mounts: |
   UUID=DE424A0D4249EABB /mnt/files1 ntfs-3g  nofail,remove_hiberfile,uid=1000,umask=0022 0 0
