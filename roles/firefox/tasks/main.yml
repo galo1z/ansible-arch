@@ -36,13 +36,13 @@
   changed_when: false
 
 - name: firefox | Get profile folder name 1
-  shell:  ls -d /home/user1/.mozilla/firefox/*.default-release  | awk '{print $(NF)}'
+  shell:  ls -d {{ user.home }}/.mozilla/firefox/*.default-release  | awk '{print $(NF)}'
 #  shell: 'ls -d {{ user.home }}/.mozilla/firefox/*.default-release | grep default-release'
   register: ff_dir_name1
   changed_when: false
 
 - name: firefox | Get profile folder name 2
-  shell:  ls -d /home/user1/.mozilla/firefox/*.default  | awk '{print $(NF)}' | grep -v release
+  shell:  ls -d {{ user.home }}/.mozilla/firefox/*.default  | awk '{print $(NF)}' | grep -v release
   #shell: 'ls -d {{ user.home }}/.mozilla/firefox/*.default  | grep default | grep -v release'
   register: ff_dir_name2
   changed_when: false

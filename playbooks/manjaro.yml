@@ -4,6 +4,11 @@
   connection: local
   become: yes
   become_method: su
+  vars:
+    user:
+      name: 'user0'
+      home: '/home/user0'
+
 #  vars:
 #    user:
 #      name: 'root'
@@ -30,6 +35,8 @@
     - { role: 'mpd',                  tags: 'mpd' }
 #    - { role: 'virtualbox',           tags: 'virtualbox' }
     - { role: 'firefox',              tags: 'firefox' }
+    - { role: 'fonts',                tags: 'fonts' }
+
     
       
   post_tasks:

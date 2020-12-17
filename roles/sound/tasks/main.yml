@@ -11,7 +11,7 @@
   - name: sound | Create config dir
     file:
       state: directory
-      path: '/home/user1/.config/pulse'
+      path: '{{ user.home }}/.config/pulse'
 
   - name: sound | Create alsa config 1
     copy:
