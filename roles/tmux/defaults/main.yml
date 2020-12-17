@@ -9,3 +9,6 @@ packages:
 
   apt:
     - 'tmux'
+
+  yum:
+    - 'gcc'

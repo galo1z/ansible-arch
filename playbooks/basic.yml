@@ -1,6 +1,7 @@
 ---
 - name: Rock and roll!
-  hosts: host1
+  hosts: local
+  #hosts: host1
   connection: ssh
   become: yes
   vars:
@@ -15,10 +16,10 @@
       home: '/root'
 
   roles:
-    #    - { role: 'user',             tags: 'user' }
+#    - { role: 'user',             tags: 'user' }
     - { role: 'epel',             tags: 'epel' }
     - { role: 'zsh',              tags: 'zsh' }
-    - { role: 'neovim',           tags: 'neovim' }
+    - { role: 'nvim',             tags: 'nvim' }
     - { role: 'tmux',             tags: 'tmux' }
     - { role: 'min_software',     tags: 'min_software' }
       
