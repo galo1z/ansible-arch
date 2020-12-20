@@ -7,8 +7,8 @@ packages:
     - 'xclip'
   pacman:
     - 'fzf'
-  apt:
-    - 'fzf'
+  #apt: #TODO
+  #  - 'fzf'
 
 zsh:
   theme: pygmalion

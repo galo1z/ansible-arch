@@ -14,7 +14,10 @@
   
   - name: min_software | Install fd using cargo
     command: 'cargo install fd-find'
+  when:
+    - ansible_facts['os_family'] == 'RedHat'
 
+- block:
   - name: min_software | Download fzf git repo
     git:
       repo: 'https://github.com/junegunn/fzf.git'
@@ -23,7 +26,7 @@
   - name: min_software | Install fzf
     command: '{{ user.home }}/.fzf/install --key-bindings --completion --update-rc'
   when:
-    - ansible_facts['os_family'] == 'RedHat'
+    - ansible_facts['os_family'] == 'RedHat' or ansible_facts['os_family'] == 'Ubuntu'
 
 - name: min_software | Add fd alias for Debian-based
   blockinfile:

@@ -2,7 +2,7 @@
 - include_role: name='software'
 
 - name: pacman | Sort mirrors by reflector
-  shell: reflector --threads 20 --latest 20 -p https --sort rate --save /etc/pacman.d/mirrorlist
+  shell: reflector --latest 10 -p https --sort rate --save /etc/pacman.d/mirrorlist
 
 - name: pacman | Add alias pacman = sudo pacman
   blockinfile:

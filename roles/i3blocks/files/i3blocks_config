@@ -13,6 +13,11 @@ separator_block_width=15
 interval=2
 signal=10
 
+[pavucontrol]
+full_text=
+color=#208273
+command=pavucontrol
+
 ### RESOURCES
 
 [root]

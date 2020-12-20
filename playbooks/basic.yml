@@ -1,25 +1,26 @@
 ---
 - name: Rock and roll!
-  hosts: local
+  hosts: host1
   #hosts: host1
   connection: ssh
   become: yes
   vars:
-    #ansible_python_interpreter: /usr/bin/python3
+    ansible_python_interpreter: /usr/bin/python3 # need for ubuntu 18
     #become_method: sudo
     user:
       #name: 'centos'
       #home: '/home/centos'
-      #name: 'user1'
-      #home: '/home/user1'
-      name: 'root'
-      home: '/root'
+      name: 'user1'
+      home: '/home/user1'
+      #name: 'root'
+      #home: '/root'
 
   roles:
-#    - { role: 'user',             tags: 'user' }
+    - { role: 'user',             tags: 'user' }
     - { role: 'epel',             tags: 'epel' }
     - { role: 'zsh',              tags: 'zsh' }
     - { role: 'nvim',             tags: 'nvim' }
     - { role: 'tmux',             tags: 'tmux' }
     - { role: 'min_software',     tags: 'min_software' }
+    - { role: 'alacritty',        tags: 'alacritty' }
       

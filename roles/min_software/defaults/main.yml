@@ -5,10 +5,14 @@ packages:
     - 'lsof'
     - 'nnn'
     - 'curl'
-    - 'ripgrep'
-
-  apt:
-    - 'fd-find'
 
   pacman:
     - 'fd'
+    - 'ripgrep'
+
+  #apt:
+    #- 'fd-find' #TODO (ubuntu 18 at least)
+    #- 'ripgrep' #TODO
+    
+  yum:
+    - 'ripgrep'
