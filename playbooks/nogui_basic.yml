@@ -1,7 +1,6 @@
 ---
 - name: Rock and roll!
   hosts: host1
-  #hosts: host1
   connection: ssh
   become: yes
   vars:
@@ -10,8 +9,8 @@
     user:
       #name: 'centos'
       #home: '/home/centos'
-      name: 'user1'
-      home: '/home/user1'
+      name: 'root'
+      home: '/root'
       #name: 'root'
       #home: '/root'
 
@@ -22,5 +21,3 @@
     - { role: 'nvim',             tags: 'nvim' }
     - { role: 'tmux',             tags: 'tmux' }
     - { role: 'min_software',     tags: 'min_software' }
-    - { role: 'alacritty',        tags: 'alacritty' }
-      

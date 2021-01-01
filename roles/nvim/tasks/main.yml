@@ -14,10 +14,19 @@
         src: hybrid_fixed.vim
         dest: '{{ user.home}}/.config/nvim/colors/'
 
+#    - name: nvim | Create init.vim config
+#      template:
+#        src: init.vim.j2
+#        dest: '{{ user.home }}/.config/nvim/init.vim'
+#      when:
+#        - ansible_facts['os_family'] != 'RedHat'
+
     - name: nvim | Create init.vim config
       template:
-        src: init.vim.j2
+        src: init.vim_basic.j2
         dest: '{{ user.home }}/.config/nvim/init.vim'
+#      when:
+#        - ansible_facts['os_family'] == 'RedHat'
 
     - name: nvim | Download dein installer
       get_url:
