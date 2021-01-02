@@ -1,11 +1,11 @@
 ---
 - name: Rock and roll!
-  hosts: host1
   #hosts: host1
+  hosts: localhost
   connection: ssh
   become: yes
   vars:
-    #ansible_python_interpreter: /usr/bin/python3 # need for ubuntu 18
+    ansible_python_interpreter: /usr/bin/python3 # need for ubuntu 18
     #become_method: sudo
     user:
       #name: 'centos'
