@@ -42,6 +42,13 @@ shell:
       sudo systemctl status "$1" | head -n 3
       sudo journalctl -f --since "10 seconds ago" --unit "$1"
     }
+    function rg1() {
+      grep -RnisI --color=auto "$1" *
+    }
+    
+    function dd1() {
+      sudo dd if="$1" of="$2" oflag=sync status=progress
+    }
 
   exports: | 
     export PAGER='less'
