@@ -47,7 +47,7 @@ shell:
     }
     
     function dd1() {
-      sudo dd if="$1" of="$2" oflag=sync status=progress
+      sudo dd if="$1" of="$2" oflag=sync status=progress bs=8M
     }
 
   exports: | 
