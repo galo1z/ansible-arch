@@ -10,49 +10,50 @@ packages:
   #apt: #TODO
   #  - 'fzf'
 
-zsh:
-  theme: pygmalion
-  plugins:
-  - 'fzf'
-  - 'git-extras'
-  - 'docker'          #docker command-line completion
-  - 'docker-compose'  #docker command-line completion
-
-shell:
-  aliases: |
-    alias ls='ls -l -F -h -t --author --time-style=long-iso --group-directories-first --color=always'
-    alias rg='rg --hidden --ignore-case --max-columns 500 --no-ignore --pretty'
-    alias genpass='openssl rand -base64 18 | xclip -sel clip'
-    alias clip='xclip -sel clip'
-    alias lsof1='sudo lsof -i -P -n'
-    alias lsof2='sudo lsof -i -P -n | cut -f 1 -d " "| uniq | tail -n +2'
-    alias ps1='ps awwfux | less -S'
-    alias mgrep='egrep -v "^$|^[[:space:]]*#"'
-    alias tmux='tmux -2' # Needed for 256 color tmux to work
-    alias less='less --IGNORE-CASE'
-    alias ip1='ip -brief -color a'
-    alias sc="sudo systemctl"
-    alias sclf="sudo systemctl list-units --state=failed"
-    alias jctl="sudo journalctl -b --priority=warning"
-    alias dmsg='sudo dmesg -l 1,2,3,4 --color=always --ctime -x'
-
-  functions: |
-    function scr() {
-      sudo systemctl restart "$1"
-      sudo systemctl status "$1" | head -n 3
-      sudo journalctl -f --since "10 seconds ago" --unit "$1"
-    }
-    function rg1() {
-      grep -RnisI --color=auto "$1" *
-    }
-    
-    function dd1() {
-      sudo dd if="$1" of="$2" oflag=sync status=progress bs=8M
-    }
-
-  exports: | 
-    export PAGER='less'
-    export EDITOR='nvim'
-    export TERM='xterm-256color'
-    export DISABLE_LS_COLORS='true' # Need this so on-my-zsh will not override my ls alias
-    export PATH="$PATH:$HOME/.local/bin" # python3 pip packages
+#zsh:
+#  theme: pygmalion
+#  plugins:
+#  - 'fzf'
+#  - 'git-extras'
+#  - 'docker'          #docker command-line completion
+#  - 'docker-compose'  #docker command-line completion
+#
+#shell:
+#  aliases: |
+#    alias ls='ls -l -F -h -t --author --time-style=long-iso --group-directories-first --color=always'
+#    alias rg='rg --hidden --ignore-case --max-columns 500 --no-ignore --pretty'
+#    alias genpass='openssl rand -base64 18 | xclip -sel clip'
+#    alias clip='xclip -sel clip'
+#    alias lsof1='sudo lsof -i -P -n'
+#    alias lsof2='sudo lsof -i -P -n | cut -f 1 -d " "| uniq | tail -n +2'
+#    alias ps1='ps awwfux | less -S'
+#    alias mgrep='egrep -v "^$|^[[:space:]]*#"'
+#    alias tmux='tmux -2' # Needed for 256 color tmux to work
+#    alias less='less --IGNORE-CASE'
+#    alias ip1='ip -brief -color a'
+#    alias sc="sudo systemctl"
+#    alias sclf="sudo systemctl list-units --state=failed"
+#    alias jctl="sudo journalctl -b --priority=warning"
+#    alias dmsg='sudo dmesg -l 1,2,3,4 --color=always --ctime -x'
+#    alias dockex='docker exec -ti'
+#
+#  functions: |
+#    function scr() {
+#      sudo systemctl restart "$1"
+#      sudo systemctl status "$1" | head -n 3
+#      sudo journalctl -f --since "10 seconds ago" --unit "$1"
+#    }
+#    function rg1() {
+#      grep -RnisI --color=auto "$1" *
+#    }
+#    
+#    function dd1() {
+#      sudo dd if="$1" of="$2" oflag=sync status=progress bs=8M
+#    }
+#
+#  exports: | 
+#    export PAGER='less'
+#    export EDITOR='nvim'
+#    export TERM='xterm-256color'
+#    export DISABLE_LS_COLORS='true' # Need this so on-my-zsh will not override my ls alias
+#    export PATH="$PATH:$HOME/.local/bin" # python3 pip packages
