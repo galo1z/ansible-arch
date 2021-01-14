@@ -11,7 +11,7 @@
 
     - name: nvim | Install my colorscheme
       copy:
-        src: hybrid_fixed.vim
+        src: hybrid.vim
         dest: '{{ user.home}}/.config/nvim/colors/hybrid.vim'
 
 #    - name: nvim | Create init.vim config
