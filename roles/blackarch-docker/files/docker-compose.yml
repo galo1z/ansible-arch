@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  black_arch:
+    build: ./
+    container_name: barch
+    network_mode: "host"
+    privileged: true
+    tty: true
+    volumes:
+      - /root:/home/user0/hacking

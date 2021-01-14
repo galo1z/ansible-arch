@@ -1,0 +1,12 @@
+metasploit
+nmap
+exploitdb
+nmap
+sqlmap
+netcat
+wpscan
+proxychains
+hydra
+nikto
+gobuster
+dirbuster

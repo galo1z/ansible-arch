@@ -1,0 +1,92 @@
+FROM kalilinux/kali-rolling
+
+COPY base.txt /tmp/base.txt
+ARG TOOLS_BASE="iproute2 \
+                net-tools \
+                iputils-ping \
+                dnsutils \
+                pciutils \
+                wget \
+                curl \
+                git \
+                openssh-server \
+                telnet \
+                zsh \
+                neovim \
+                tmux \
+                nnn \
+                python "
+#                python2 \
+#                tcpdump \
+#                npm \
+#                openssl \
+
+#NOTE - metasploit installed in later build; not included in base
+ARG TOOLS_KALI="nmap"
+
+#ARG TOOLS_KALI="metasploit-framework \
+#                exploitdb \
+#                nmap \
+#                sqlmap \
+#                netcat \
+#                wpscan \
+#                proxychains \
+#                hydra \
+#                nikto \
+#                gobuster \
+#                dirbuster"
+
+#                crackmapexec \
+#                dirb \
+#                dnsenum \
+#                dnsmap \
+#                dnsrecon \
+#                enum4linux \
+#                exploitdb \
+#                fierce \
+#                hydra \
+#                ike-scan \
+#                impacket-scripts \
+#                joomscan \
+#                nbtscan \
+#                netcat \
+#                nfs-common \
+#                nikto \
+#                nmap \
+#                onesixtyone \
+#                python3-scrapy \
+#                recon-ng \
+#                responder \
+#                rpcbind \
+#                snmpcheck \
+#                sqlmap \
+#                sslscan \
+#                sslyze \
+#                theharvester \
+#                tcptraceroute \
+#                whatweb \
+#                whois \
+#                wpscan"
+
+RUN apt-get update && \
+    apt-get dist-upgrade -y && \
+    apt-get install -y --no-install-recommends $TOOLS_BASE && \
+    apt-get install -y --no-install-recommends $TOOLS_KALI && \
+    apt-get autoremove -y && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+    
+#RUN git clone --depth=1 https://github.com/danielmiessler/seclists /opt/seclists && \
+#    rm -rf /opt/seclists/.git && \
+#    rm -rf /opt/seclists/*.gz
+    
+#RUN git clone --depth=1 https://github.com/isaudits/scripts /opt/scripts && \
+#    rm -rf /opt/scripts/.git
+
+#RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh) --unattended" && \
+RUN    chsh -s $(which zsh)
+
+WORKDIR /root
+
+#/bin/zsh
+#CMD ["tail", "-f", "/dev/null"]

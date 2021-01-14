@@ -1,0 +1,42 @@
+version: '3'
+
+services:
+#  msf:
+#    image: metasploitframework/metasploit-framework
+#    container_name: msf
+#    network_mode: 'host'
+#    privileged: true
+#    tty: true
+#    volumes:
+#      - ~/.msf4:/root/.msf4
+#      - /tmp/msf:/tmp/data
+#    command: tail -f /dev/null # keep container running after starting with compose
+
+#-p 443:443
+#-v ~/.msf4:/root/.msf4
+#-v /tmp/msf:/tmp/data 
+
+#  postgres-msf:
+#    image: postgres
+#    container_name: postgres-mfs
+#    network_mode: 'host'
+#    #ports:
+#    #  - 127.0.0.1:33333:5432
+#    env_file:
+#      - db.env
+#    volumes:
+#      - ~/.postgres_msf_db:/var/lib/postgresql/data
+
+  black_arch:
+    build: ./
+    container_name: barch
+#    depends_on:
+#      - postgres-msf
+    network_mode: "host"
+    privileged: true
+    tty: true
+    #hostname: kali
+    #command: tail -f /dev/null # keep container running after starting with compose
+    volumes:
+      - /root:/home/user0/hacking
+#      - ./database.yml:/root/.msf4/database.yml:ro

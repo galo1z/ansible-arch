@@ -1,0 +1,4 @@
+neovim
+jedi 
+pep8
+autopep8

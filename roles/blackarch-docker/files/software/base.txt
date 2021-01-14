@@ -1,0 +1,12 @@
+net-tools
+python
+python-pip
+wget
+git
+zsh
+neovim
+tmux
+nnn
+fzf
+fd
+ripgrep
