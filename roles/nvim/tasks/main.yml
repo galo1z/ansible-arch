@@ -22,8 +22,8 @@
 #        - ansible_facts['os_family'] != 'RedHat'
 
     - name: nvim | Create init.vim config
-      template:
-        src: init.vim_basic.j2
+      copy:
+        src: init.vim
         dest: '{{ user.home }}/.config/nvim/init.vim'
 #      when:
 #        - ansible_facts['os_family'] == 'RedHat'

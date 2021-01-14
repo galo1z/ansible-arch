@@ -60,11 +60,11 @@ augroup END
 "----------------------------------
 " Add the dein installation directory into runtimepath
 " TODO: make it a template!!!!!
-set runtimepath+={{ dein_config_dir }}/repos/github.com/Shougo/dein.vim
+set runtimepath+={{ user.home }}/.config/dein/repos/github.com/Shougo/dein.vim
 
-if dein#load_state('{{ dein_config_dir }}')
-  call dein#begin('{{ dein_config_dir }}')
-    call dein#add('{{ dein_config_dir }}/repos/github.com/Shougo/dein.vim')
+if dein#load_state('{{ user.home }}/.config/dein')
+  call dein#begin('{{ user.home }}/.config/dein')
+    call dein#add('{{ user.home }}/.config/dein/repos/github.com/Shougo/dein.vim')
     call dein#add('roxma/nvim-yarp')
     call dein#add('roxma/vim-hug-neovim-rpc')
     "Add new plugins here
