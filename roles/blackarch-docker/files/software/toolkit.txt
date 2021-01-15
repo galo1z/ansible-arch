@@ -10,3 +10,4 @@ hydra
 nikto
 gobuster
 dirbuster
+whatweb

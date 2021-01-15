@@ -1,0 +1,20 @@
+alias vim='nvim'
+
+export ip=127.0.0.1
+export lip=127.0.0.1
+export port=80
+export lport=31337
+
+function setip() {
+  sed -i "s/^export ip=.*$/export ip=$1/" ~/.zshrc_extra
+  export ip="$1"
+}
+function setport() {
+  sed -i "s/^export port=.*$/export port=$1/" ~/.zshrc_extra
+  export port="$1"
+}
+function setlport() {
+  sed -i "s/^export lport=.*$/export lport=$1/" ~/.zshrc_extra
+  export lport="$1"
+}
+export lip="$(ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1' | grep -v '172.')"
