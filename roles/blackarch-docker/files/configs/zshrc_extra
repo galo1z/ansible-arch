@@ -4,7 +4,14 @@ export ip=127.0.0.1
 export lip=127.0.0.1
 export port=80
 export lport=31337
+export link='http://127.0.0.1'
+export pass_list='/opt/seclists/Passwords/Leaked-Databases/rockyou-75.txt'
+export dir_list='/opt/seclists/Discovery/Web-Content/directory-list-2.3-big.txt'
 
+function setlink() {
+  sed -i '/^export link=/d' ~/.zshrc_extra
+  echo "export link='"$1"'" >> ~/.zshrc_extra
+}
 function setip() {
   sed -i "s/^export ip=.*$/export ip=$1/" ~/.zshrc_extra
   export ip="$1"

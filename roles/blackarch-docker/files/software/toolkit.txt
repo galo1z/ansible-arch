@@ -11,3 +11,4 @@ nikto
 gobuster
 dirbuster
 whatweb
+sshpass

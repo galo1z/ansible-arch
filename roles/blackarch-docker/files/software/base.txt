@@ -10,3 +10,4 @@ nnn
 fzf
 fd
 ripgrep
+openssh
