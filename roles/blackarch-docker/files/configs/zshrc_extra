@@ -1,27 +1,55 @@
 alias vim='nvim'
+alias msfconsole='msfconsole -r ~/.msf_res.rb'
 
 export ip=127.0.0.1
 export lip=127.0.0.1
 export port=80
 export lport=31337
 export link='http://127.0.0.1'
+export proxy='http://127.0.0.1:31337'
+export login='root'
+export password='qwerty'
 export pass_list='/opt/seclists/Passwords/Leaked-Databases/rockyou-75.txt'
 export dir_list='/opt/seclists/Discovery/Web-Content/directory-list-2.3-big.txt'
+export login_list='/opt/seclists/Usernames/top-usernames-shortlist.txt'
+
+export lip="$(ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep '192.168')"
 
 function setlink() {
   sed -i '/^export link=/d' ~/.zshrc_extra
   echo "export link='"$1"'" >> ~/.zshrc_extra
+  export link="$1"
 }
+
 function setip() {
   sed -i "s/^export ip=.*$/export ip=$1/" ~/.zshrc_extra
   export ip="$1"
 }
+
 function setport() {
   sed -i "s/^export port=.*$/export port=$1/" ~/.zshrc_extra
   export port="$1"
 }
+
 function setlport() {
   sed -i "s/^export lport=.*$/export lport=$1/" ~/.zshrc_extra
   export lport="$1"
 }
-export lip="$(ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1' | grep -v '172.')"
+
+function setlogin(){
+  sed -i "s/^export login=.*$/export login=$1/" ~/.zshrc_extra
+  export login="$1"
+}
+
+function setpassword(){
+  sed -i "s/^export password=.*$/export password=$1/" ~/.zshrc_extra
+  export password="$1"
+}
+
+function setproxy() {
+  sed -i '/^export proxy=/d' ~/.zshrc
+  echo "export proxy='"$1"'" >> ~/.zshrc
+  export proxy="$1"
+}
+
+

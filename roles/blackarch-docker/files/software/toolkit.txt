@@ -12,3 +12,5 @@ gobuster
 dirbuster
 whatweb
 sshpass
+smtp-user-enum
+smbclient

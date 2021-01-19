@@ -39,3 +39,8 @@ RUN git clone --depth=1 https://github.com/isaudits/scripts /opt/scripts && \
 # Get payloads
 RUN git clone --depth=1 https://github.com/swisskyrepo/PayloadsAllTheThings /opt/payloads && \
     rm -rf /opt/payloads/.git
+
+# Misc
+COPY configs/msf_res.rb /root/.msf_rec.rb
+
+ENTRYPOINT ["/bin/zsh"]

@@ -1,6 +1,7 @@
 net-tools
 python
 python-pip
+python2
 wget
 git
 zsh
