@@ -27,3 +27,6 @@
       src: 'mimeinfo.cache'
       dest: '{{ user.home }}/.local/share/applications/mimeinfo.cache'
   become_user: '{{ user.name }}'
+
+- name: mimes | Make mimeinfo file immutable 
+  shell: 'chattr -i {{ user.home }}/.local/share/applications/mimeinfo.cache'
