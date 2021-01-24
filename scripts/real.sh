@@ -5,8 +5,8 @@
 device='/dev/nvme0n1'
 efi_id='p1'
 root_id='p2'
-home_id='p3'
-kernel='-lts' # '-zen'/'-lts'/'-hardened' or empty if kernel is stanard
+#home_id='p3'
+kernel='' # '-zen'/'-lts'/'-hardened' or empty if kernel is stanard
 net_dev='enp34s0'
 #use_wifi = true/false # TODO
 
@@ -27,8 +27,8 @@ wipefs -af $device
 
 # Create partitions
 sgdisk --new 1::+512M --typecode 1:ef00 --change-name 1:"EFI System" "$device"
-sgdisk --new 2::+40G  --typecode 2:8304 --change-name 2:"MazaHaKa Linux root" "$device"
-sgdisk --new 3::: --typecode 3:8302 --change-name 3:"MazaHaKa Linux home" "$device"
+sgdisk --new 2:::  --typecode 2:8304 --change-name 2:"MazaHaKa Linux root" "$device"
+#sgdisk --new 3::: --typecode 3:8302 --change-name 3:"MazaHaKa Linux home" "$device"
 
 # Create filesystem on /boot
 mkfs.fat -F32 "$device""$efi_id"
@@ -83,4 +83,3 @@ arch-chroot /mnt /bin/bash -c 'passwd'
 # Unmount and reboot
 cd ~
 umount -R /mnt
-reboot

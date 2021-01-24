@@ -1,7 +1,7 @@
 ---
 user:
-  name: 'user1'
-  home: '/home/user1'
+  name: 'user0'
+  home: '/home/user0'
 
 is_kernel_default: 'True'
 kernel_name: '' #lts
@@ -12,8 +12,8 @@ fstab_mounts: |
 
 wired_net:
   interface: 'enp34s0'
-  ip: '192.168.0.3/24' # dhcp if undefined
-  gateway: '192.168.0.1'
+  ip: '' # dhcp if undefined
+  #  gateway: '192.168.0.1'
 
 #wifi:
 #  ssid: ''

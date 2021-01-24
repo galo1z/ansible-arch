@@ -1,18 +1,18 @@
 ---
 - include_role: name='software'
 
-- name: virtualbox | Install kernel-dependent software 1
-  pacman:
-    name: virtualbox-host-modules-arch
-  when: is_kernel_default == 'True' and ansible_os_family == "Archlinux"
-
-- name: virtualbox | Install kernel-dependent software 2
-  pacman:
-    name: '{{ item }}'
-  with_items:
-    - virtualbox-host-dkms
-    - linux-{{ kernel_name }}-headers
-  when: is_kernel_default == 'False' and ansible_os_family == "Archlinux"
+  #- name: virtualbox | Install kernel-dependent software 1
+  #  pacman:
+  #    name: virtualbox-host-modules-arch
+  #  when: is_kernel_default == 'True' and ansible_os_family == "Archlinux"
+  #
+  #- name: virtualbox | Install kernel-dependent software 2
+  #  pacman:
+  #    name: '{{ item }}'
+  #  with_items:
+  #    - virtualbox-host-dkms
+  #    - linux-{{ kernel_name }}-headers
+  #  when: is_kernel_default == 'False' and ansible_os_family == "Archlinux"
 
 - name: virtualbox | Check if vboxdrv module is loaded
   shell: 'lsmod | grep vboxdrv'

@@ -6,12 +6,13 @@
       - packages.pip is defined
       - ansible_os_family == "Debian" or ansible_os_family == "Kali GNU/Linux" or ansible_facts['os_family'] == 'Ubuntu'
 
+  - name: software | Make sure pip is installed if needed (arch)
+    package: name=python-pip
+    when: 
+      - packages.pip is defined
+      - ansible_os_family == "Archlinux"
 #TODO: Will break in Centos8
-#  - name: software | Make sure pip is installed if needed (arch or centos)
-#    package: name=python-pip
-#    when: 
-#      - packages.pip is defined
-#      - ansible_os_family == "Archlinux" or ansible_distribution == "CentOS"
+#      or ansible_distribution == "CentOS"
 
   - name: software | Install common software
     package: name={{ item }}

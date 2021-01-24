@@ -1,5 +1,12 @@
 packages:
-  #pacman:
+  pacman:
+    - 'telegram-desktop'
+    - 'keepassxc'
+    - 'qbittorrent'
+    - 'libreoffice'
+    - 'fbreader'
+    - 'chromium'
+    - 'torbrowser-launcher'
   apt:
     - 'telegram-desktop'
     - 'keepassxc'
