@@ -1,7 +1,8 @@
 ---
 - name: cargo | Install cargo
-  package:
-    name: 'cargo'
+  shell: 'curl https://sh.rustup.rs -sSf | sh'
+#  package:
+#    name: 'cargo'
 
 - name: cargo | Add cargo dir to PATH
   blockinfile:

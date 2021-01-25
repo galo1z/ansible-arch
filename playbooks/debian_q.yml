@@ -6,11 +6,10 @@
   become_method: su
 
   roles:
-    - { role: 'time',                 tags: 'time' }
     - { role: 'user',                 tags: 'user' }
     - { role: 'common_software',      tags: 'common' }
     - { role: 'extra_software',       tags: 'extra' }
-    - { role: 'fonts',                tags: 'fonts' }
+#    - { role: 'fonts',                tags: 'fonts' }
     - { role: 'zsh',                  tags: 'zsh' }
     - { role: 'nvim',                 tags: 'nvim' }
     - { role: 'tmux',                 tags: 'tmux' }

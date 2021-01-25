@@ -16,7 +16,6 @@ packages:
     - 'libreoffice'
     - 'fbreader'
     - 'chromium'
-    - 'torbrowser-launcher'
 
   pip:
     - 'youtube-dl'

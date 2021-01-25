@@ -12,13 +12,12 @@ packages:
     - 'strace'
     - 'lsof'
     - 'nnn'
-    - 'firefox'
-    - 'xed'
     - 'zathura'
     - 'mpv'
     - 'file-roller'
 
   pacman:
+    - 'firefox'
     - 'amd-ucode'
     - 'openssh'
     - 'fd'
@@ -27,10 +26,12 @@ packages:
     - 'mtpfs'    # for android mounting support
     - 'man-pages'
     - 'binutils' # need on manjaro
+    - 'xed' # not in debian
 #    - 'base-devel' # manjaro
 #
   apt:
     - 'fd-find' # at least debian
+    - 'firefox-esr' # at leat debian
 
   aur:
     - 'qview'

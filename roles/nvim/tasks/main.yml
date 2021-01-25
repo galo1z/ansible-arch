@@ -28,15 +28,15 @@
 #      when:
 #        - ansible_facts['os_family'] == 'RedHat'
 
-    - name: nvim | Download dein installer
-      get_url:
-        url: https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh
-        dest: '{{ user.home }}/dein_installer.sh'
-      notify:
-        - nvim | Delete dein_installer.sh
+#    - name: nvim | Download dein installer
+#      get_url:
+#        url: https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh
+#        dest: '{{ user.home }}/dein_installer.sh'
+#      notify:
+#        - nvim | Delete dein_installer.sh
       
-    - name: nvim | Install dein
-      command: 'sh {{ user.home }}/dein_installer.sh {{ dein_config_dir }}'
+#    - name: nvim | Install dein
+#      command: 'sh {{ user.home }}/dein_installer.sh {{ dein_config_dir }}'
 
   become_user: '{{ user.name }}'
 
