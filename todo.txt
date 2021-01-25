@@ -1,3 +1,5 @@
 . Fix iptables cronjob
 . roles/kali-docker/
 . endev - i3-gaps conflict
+
+. mimes roles does not work. it ignores ~/.local/share

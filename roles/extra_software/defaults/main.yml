@@ -7,6 +7,8 @@ packages:
     - 'fbreader'
     - 'chromium'
     - 'torbrowser-launcher'
+    - 'audacious'
+
   apt:
     - 'telegram-desktop'
     - 'keepassxc'
@@ -15,10 +17,11 @@ packages:
     - 'fbreader'
     - 'chromium'
     - 'torbrowser-launcher'
+
   pip:
     - 'youtube-dl'
+
   aur:
-    - 'bitwarden'
 #    - 'etcher'
 #    - 'woeusb'
 #    - 'standardnotes-desktop'

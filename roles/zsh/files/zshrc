@@ -42,6 +42,10 @@ function dd1() {
   sudo dd if="$1" of="$2" oflag=sync status=progress bs=8M
 }
 
+function mount1() {
+  sudo mount -o umask=0022,uid="$(id -u)" "$1" "$2"
+}
+
 #exports
 export PAGER='less'
 export EDITOR='nvim'

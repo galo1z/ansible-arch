@@ -1,14 +1,4 @@
 packages:
-  pacman:
-    - 'amd-ucode'
-    - 'openssh'
-    - 'fd'
-    - 'go'
-    - 'gvfs-mtp' # for android mounting support
-    - 'mtpfs'    # for android mounting support
-    - 'man-pages'
-    - 'binutils' # need on manjaro
-    - 'base-devel' # manjaro
 
   common:
     - 'man-db'
@@ -27,5 +17,20 @@ packages:
     - 'zathura'
     - 'mpv'
     - 'file-roller'
+
+  pacman:
+    - 'amd-ucode'
+    - 'openssh'
+    - 'fd'
+    - 'go'
+    - 'gvfs-mtp' # for android mounting support
+    - 'mtpfs'    # for android mounting support
+    - 'man-pages'
+    - 'binutils' # need on manjaro
+#    - 'base-devel' # manjaro
+#
+  apt:
+    - 'fd-find' # at least debian
+
   aur:
     - 'qview'
