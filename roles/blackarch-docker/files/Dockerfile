@@ -14,25 +14,25 @@ RUN sh strap.sh && \
 COPY software/base.txt base.txt
 COPY software/toolkit.txt toolkit.txt
 RUN cat base.txt toolkit.txt  | xargs pacman -S --noconfirm --needed
-RUN cat base.txt  | xargs pacman -S --noconfirm --needed
-
 
 #TODO: pip
 #COPY software/pip.txt pip.txt
 #RUN pip install --upgrade pip
 #RUN cat pip.txt | xargs pip install 
 
+WORKDIR /root
+
 # Configure zsh 
-RUN git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh.git /root/.oh-my-zsh
+RUN git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh.git .oh-my-zsh
 RUN chsh -s $(which zsh)
 
 # Copy configs
-COPY configs/tmux.conf /root/.tmux.conf
-COPY configs/zshrc /root/.zshrc
-COPY configs/zshrc_extra /root/.zshrc_extra
-COPY configs/hybrid.vim /root/.config/nvim/colors/hybrid.vim
-COPY configs/init.vim /root/.config/nvim/init.vim
-COPY configs/msf_res.rb /root/.msf_rec.rb
+COPY configs/zshrc .zshrc
+COPY configs/tmux.conf .tmux.conf
+COPY configs/zshrc_extra .zshrc_extra
+COPY configs/msf_res.rb .msf_rec.rb
+COPY configs/hybrid.vim .config/nvim/colors/hybrid.vim
+COPY configs/init.vim .config/nvim/init.vim
 
 # Misc
 COPY scripts /root/scripts
@@ -49,6 +49,3 @@ RUN git clone --depth=1 https://github.com/danielmiessler/seclists /opt/seclists
 ## Get payloads
 #RUN git clone --depth=1 https://github.com/swisskyrepo/PayloadsAllTheThings /opt/payloads && \
 #    rm -rf /opt/payloads/.git
-
-
-#ENTRYPOINT ["/bin/zsh"]
