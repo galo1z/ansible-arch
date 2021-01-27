@@ -7,7 +7,7 @@
     register: cargo_bin
   
   - name: cargo | Install cargo
-    shell: 'curl https://sh.rustup.rs -sSf -o /tmp/cargo.sh && sh /tmp/cargo.sh -y'
+    shell: 'curl https://sh.rustup.rs -sSf -o /tmp/cargo.sh && sh /tmp/cargo.sh -y && rustup install stable  && rustup default stable'
     when:
       - cargo_bin.stat.exists == False
   

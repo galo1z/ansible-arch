@@ -12,24 +12,24 @@
     copy:
       src: alacritty.yml
       dest: '{{ user.home }}/.config/alacritty/alacritty.yml'
+
+  - name: alacritty | Check that alacritty exists
+    stat:
+      path: '{{ user.home }}.local/bin/alacritty' 
+    register: alacritty_bin
+    when: 
+      - ansible_facts['os_family'] == 'Debian' or ansible_facts['os_family'] == 'Ubuntu' #WHY NOT CENTOS?
   become_user: '{{ user.name }}'
 
-- name: alacritty | Check that alacritty exists
-  stat:
-    path: '{{ user.home }}.local/bin/alacritty' 
-  register: alacritty_bin
+- name: alacritty | Create desktop file
+  copy:
+    src: 'Alacritty.desktop'
+    dest: '/usr/share/applications/Alacritty.desktop'
   when: 
     - ansible_facts['os_family'] == 'Debian' or ansible_facts['os_family'] == 'Ubuntu' #WHY NOT CENTOS?
 
-      #- name: alacritty | Create desktop file
-      #  file:
-      #    src: 'Alacritty.desktop'
-      #    dest: '/usr/share/applications/Alacritty.desktop'
-      #  when: 
-      #    - ansible_facts['os_family'] == 'Debian' or ansible_facts['os_family'] == 'Ubuntu' #WHY NOT CENTOS?
-
 - name: alacritty | Install alacritty using cargo
-  command: '{{ home.user }}/.cargo/bin/cargo install alacritty'
+  command: '{{ user.home }}/.cargo/bin/cargo install alacritty'
   when: 
     - ansible_facts['os_family'] == 'Debian' or ansible_facts['os_family'] == 'Ubuntu' #WHY NOT CENTOS?
     - alacritty_bin.stat.exists == False 
