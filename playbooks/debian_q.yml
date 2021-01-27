@@ -4,6 +4,10 @@
   connection: local
   become: yes
   become_method: su
+  vars:
+    user:
+      name: user
+      home: /home/user
 
   roles:
     - { role: 'user',                 tags: 'user' }
