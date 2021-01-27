@@ -7,8 +7,9 @@ services:
   black_arch:
     build: ./
     container_name: black_arch
-    network_mode: "host"
+    network_mode: host
     privileged: true
     tty: true
+    restart: unless-stopped 
     volumes:
       - /home/user0/hacking:/root
