@@ -4,6 +4,7 @@ packages:
     - 'alacritty'
     - 'ttf-hack'
   apt:
+    - 'fonts-hack-ttf'
     - cmake
     - xclip
     - libfreetype6-dev

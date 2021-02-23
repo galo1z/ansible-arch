@@ -4,6 +4,11 @@
   connection: local
   become: yes
   become_method: su
+  vars:
+    allow_sudo: False
+    user:
+      name: 'user'
+      home: '/home/user'
 
   roles:
     - { role: 'user',                 tags: 'user' }

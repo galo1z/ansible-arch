@@ -1,12 +1,26 @@
 ---
-- name: cargo | Install cargo
-  shell: 'curl https://sh.rustup.rs -sSf | sh'
-#  package:
-#    name: 'cargo'
+- include_role: name='software'
+- block:
+  - name: cargo | Check that cargo exists
+    stat:
+      path: '{{ user.home }}/.cargo/bin/cargo'
+    register: cargo_bin
+  
+  - name: cargo | Install cargo
+    shell: 'curl https://sh.rustup.rs -sSf -o /tmp/cargo.sh && sh /tmp/cargo.sh -y && rustup install stable  && rustup default stable'
+    when:
+      - cargo_bin.stat.exists == False
+  
+  - name: cargo | Delete temp file
+    file:
+      state: absent
+      path: /tmp/cargo.sh
+  
+  - name: cargo | Add cargo dir to PATH
+    blockinfile:
+      marker: '# {mark} Ansible managed: min_software role, 1'
+      path: "{{ user.home }}/.zshrc_extra"
+      block: |
+        export PATH="{{ user.home }}/.cargo/bin:$PATH"
+  become_user: '{{ user.name }}'
 
-- name: cargo | Add cargo dir to PATH
-  blockinfile:
-    marker: '# {mark} Ansible managed: min_software role, 1'
-    path: "{{ user.home }}/.zshrc_extra"
-    block: |
-      export PATH="{{ user.home }}/.cargo/bin:$PATH"

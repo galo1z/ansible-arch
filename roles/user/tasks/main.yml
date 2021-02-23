@@ -11,7 +11,9 @@
     marker: '# {mark} Ansible managed: user role for {{ user.name }}'
     block: |
       {{ user.name }} ALL=(ALL) ALL
-  when: user.name != 'root'
+  when:
+    - user.name != 'root'
+    - allow_sudo == True
 
 - name: user | Create .config directory
   file:
