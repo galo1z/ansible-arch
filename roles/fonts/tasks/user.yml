@@ -1,0 +1,15 @@
+---
+- block:
+  - name: fonts | Create font config directory
+    file:
+      state: directory
+      path: '{{ user.home }}/.config/fontconfig'
+  
+  - name: fonts | Copy font config
+    copy:
+      src: fonts.conf 
+      dest: '{{ user.home }}/.config/fontconfig/fonts.conf'
+    notify: 'fonts | Update font cache'
+  become_user: '{{ user.name }}'
+  when:
+  - ansible_os_family == "Archlinux"

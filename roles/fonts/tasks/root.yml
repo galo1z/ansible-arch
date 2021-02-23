@@ -1,0 +1,8 @@
+---
+- name: fonts | Enable FreeType subpixel hinting mode
+  lineinfile:
+    path: '/etc/profile.d/freetype2.sh'
+    regex: '#?export FREETYPE_PROPERTIES="truetype:interpreter-version=40"'
+    line: 'export FREETYPE_PROPERTIES="truetype:interpreter-version=40"'
+  when:
+  - ansible_os_family == "Archlinux"

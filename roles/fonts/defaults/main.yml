@@ -1,4 +1,8 @@
 packages:
+  apt:
+    - 'fonts-noto'
+    - 'fonts-noto-cjk'
+
   pacman:
     - 'noto-fonts'
     - 'noto-fonts-cjk' #  Simplified Chinese, Traditional Chinese, Japanese, and Korea

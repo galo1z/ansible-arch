@@ -15,7 +15,7 @@
     - { role: 'user',                 tags: 'user' } # always 1st
     - { role: 'common_software',      tags: 'common' } # always 2nd
     - { role: 'extra_software',       tags: 'extra' }
-#    - { role: 'fonts',                tags: 'fonts' }
+    - { role: 'fonts',                tags: 'fonts' }
     - { role: 'zsh',                  tags: 'zsh' }
     - { role: 'nvim',                 tags: 'nvim' }
     - { role: 'tmux',                 tags: 'tmux' }
@@ -24,4 +24,3 @@
     - { role: 'typora',               tags: 'typora' }
     - { role: 'alacritty',            tags: 'alacritty','terminal' }
 #    - { role: 'mimes',                tags: 'mimes' }
-#    - { role: 'apparmor',             tags: 'apparmor' }

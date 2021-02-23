@@ -1,21 +1,5 @@
 ---
 - include_role: name='software'
- 
-- name: fonts | Enable FreeType subpixel hinting mode
-  lineinfile:
-    path: '/etc/profile.d/freetype2.sh'
-    regex: '#?export FREETYPE_PROPERTIES="truetype:interpreter-version=40"'
-    line: 'export FREETYPE_PROPERTIES="truetype:interpreter-version=40"'
-
-- block:
-  - name: fonts | Create font config directory
-    file:
-      state: directory
-      path: '{{ user.home }}/.config/fontconfig'
-  
-  - name: fonts | Copy font config
-    copy:
-      src: fonts.conf 
-      dest: '{{ user.home }}/.config/fontconfig/fonts.conf'
-    notify: 'fonts | Update font cache'
-  become_user: '{{ user.name }}'
+- include_tasks: 'root.yml'
+  when: root_access == True
+- include_tasks: 'user.yml'
