@@ -1,5 +1,6 @@
 alias vim='nvim'
-alias msfconsole='msfconsole -r ~/.msf_res.rb'
+#alias msfconsole='msfconsole -r ~/.msf_res.rb'
+alias get_shell='/root/scripts/get_shell.py'
 
 export ip=127.0.0.1
 export lip=127.0.0.1
@@ -14,6 +15,13 @@ export dir_list='/opt/seclists/Discovery/Web-Content/directory-list-2.3-big.txt'
 export login_list='/opt/seclists/Usernames/top-usernames-shortlist.txt'
 
 export lip="$(ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep '192.168')"
+
+function msfconsole() {
+  # Fix for bug, when session does not go to background when Ctr+Z pressed
+  echo 'trap "" TSTP' > /tmp/msf.sh
+  echo 'msfconsole --quiet -r ~/.msf_res.rb' >> /tmp/msf.sh
+  sh /tmp/msf.sh
+}
 
 function setlink() {
   sed -i '/^export link=/d' ~/.zshrc_extra

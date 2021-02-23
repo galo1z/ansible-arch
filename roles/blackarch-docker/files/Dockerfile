@@ -30,9 +30,10 @@ RUN chsh -s $(which zsh)
 COPY configs/zshrc .zshrc
 COPY configs/tmux.conf .tmux.conf
 COPY configs/zshrc_extra .zshrc_extra
-COPY configs/msf_res.rb .msf_rec.rb
+COPY configs/msf_res.rb .msf_res.rb
 COPY configs/hybrid.vim .config/nvim/colors/hybrid.vim
 COPY configs/init.vim .config/nvim/init.vim
+RUN chmod +x /root/scripts/*
 
 # Misc
 COPY scripts /root/scripts

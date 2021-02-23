@@ -1,0 +1,4 @@
+---
+packages:
+  aur:
+   - vmware-workstation

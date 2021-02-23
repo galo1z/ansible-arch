@@ -30,6 +30,7 @@
 #    - { role: 'bluetooth',            tags: 'bluetooth' }
     - { role: 'sound',                tags: 'sound' }
     - { role: 'virtualbox',           tags: 'virtualbox' }
+    - { role: 'vmware',           tags: 'vmware' }
     - { role: 'mimes',                tags: 'mimes' }
     - { role: 'apparmor',             tags: 'apparmor' }
       

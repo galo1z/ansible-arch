@@ -1,0 +1,28 @@
+for start_web dir:
+
+#PrivEsc
+https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite
+https://raw.githubusercontent.com/rebootuser/LinEnum/master/LinEnum.sh
+binary and c-code for priv esc
+su bruteforce
+socat or alternative
+https://github.com/rasta-mouse/Watson
+
+
+TODO:
+
+aliases: start_web in scripts and stuff dir
+
+script with useful aliases for target (lip, lport, grep, fd, stuff, ps, ...)
+
+---------
+functions:
+
+win_download (1 arg) - generate download command for windows from my host. arg is filename to download (certutil.exe command?)
+
+---------
+start_smb, start_ftp scripts
+
+smb:
+https://raw.githubusercontent.com/SecureAuthCorp/impacket/master/examples/smbserver.py
+https://blog.ropnop.com/transferring-files-from-kali-to-windows/#smb

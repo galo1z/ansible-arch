@@ -170,3 +170,4 @@ application/x-7z-compressed=org.gnome.FileRoller.desktop;
 application/vnd.ms-cab-compressed=org.gnome.FileRoller.desktop;
 application/vnd.android.package-archive=org.gnome.FileRoller.desktop;
 application/java-archive=org.gnome.FileRoller.desktop;
+application/zip=org.gnome.FileRoller.desktop;

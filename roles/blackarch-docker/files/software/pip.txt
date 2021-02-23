@@ -2,3 +2,5 @@ neovim
 jedi 
 pep8
 autopep8
+name-that-hash
+knocker
