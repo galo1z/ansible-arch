@@ -1,6 +1,10 @@
 ---
 packages:
-  common:
+  pacman:
     - 'firefox'
+  yum:
+    - 'firefox'
+  apt:
+    - 'firefox-esr'
 
-relaxed_version: True
+firefox_config: 'relaxed'

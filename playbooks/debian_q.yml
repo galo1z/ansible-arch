@@ -6,7 +6,11 @@
   become_method: su
   vars:
     #root_access: False
+    #user_access: False
+    # TODO: sudo ???
     allow_sudo: False
+    firefox_config: ''
+
     user:
       name: 'user'
       home: '/home/user'
@@ -22,5 +26,6 @@
     - { role: 'thunar',               tags: 'thunar' }
     - { role: 'zathura',              tags: 'zathura' }
     - { role: 'typora',               tags: 'typora' }
-    - { role: 'alacritty',            tags: 'alacritty','terminal' }
+    - { role: 'alacritty',            tags: 'alacritty' }
+    - { role: 'firefox',              tags: 'firefox' }
 #    - { role: 'mimes',                tags: 'mimes' }

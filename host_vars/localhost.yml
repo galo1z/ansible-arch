@@ -31,3 +31,4 @@ wireguard:
 
 # Workaround
 root_access: True
+user_access: True
