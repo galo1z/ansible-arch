@@ -1,28 +1,5 @@
 ---
 - include_role: name='software'
-
-- name: user | Create user
-  user:
-    name: '{{ user.name }}'
-
-- name: user | Allow sudo rights
-  blockinfile:
-    path: /etc/sudoers
-    marker: '# {mark} Ansible managed: user role for {{ user.name }}'
-    block: |
-      {{ user.name }} ALL=(ALL) ALL
-  when:
-    - user.name != 'root'
-    - allow_sudo == True
-
-- name: user | Create .config directory
-  file:
-    path: '{{ user.home }}/.config'
-    state: directory
-  become_user: '{{ user.name }}'
-
-- name: user | Create .zshrc_extra
-  file:
-    path: '{{ user.home }}/.zshrc_extra'
-    state: touch
-  become_user: '{{ user.name }}'
+- include_tasks: 'root.yml'
+  when: root_access == True
+- include_tasks: 'user.yml'

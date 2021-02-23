@@ -1,0 +1,20 @@
+---
+- block:
+  - name: thunar | Create config directories
+    file:
+      state: directory
+      path: '{{ item }}'
+    with_items:
+      - '{{ user.home }}/.config/xfce4/xfconf/xfce-perchannel-xml'
+      - '{{ user.home }}/.config/Thunar'
+  
+  - name: thunar | Create config
+    copy:
+      src: 'thunar.xml'
+      dest: '{{ user.home }}/.config/xfce4/xfconf/xfce-perchannel-xml/'
+
+  - name: thunar | Create config with custom actions
+    copy:
+      src: 'uca.xml'
+      dest: '{{ user.home }}//.config/Thunar/'
+  become_user: '{{ user.name }}'

@@ -5,14 +5,15 @@
   become: yes
   become_method: su
   vars:
+    #root_access: False
     allow_sudo: False
     user:
       name: 'user'
       home: '/home/user'
 
   roles:
-    - { role: 'user',                 tags: 'user' }
-    - { role: 'common_software',      tags: 'common' }
+    - { role: 'user',                 tags: 'user' } # always 1st
+    - { role: 'common_software',      tags: 'common' } # always 2nd
     - { role: 'extra_software',       tags: 'extra' }
 #    - { role: 'fonts',                tags: 'fonts' }
     - { role: 'zsh',                  tags: 'zsh' }

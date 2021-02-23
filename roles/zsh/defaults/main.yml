@@ -11,4 +11,4 @@ packages:
     - 'fzf'
 
   apt:
-    - 'fzf' # at leat debian
+    - 'fzf' # at least debian

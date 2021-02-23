@@ -1,0 +1,12 @@
+---
+- block:
+  - name: user | Create .config directory
+    file:
+      path: '{{ user.home }}/.config'
+      state: directory
+  
+  - name: user | Create .zshrc_extra
+    file:
+      path: '{{ user.home }}/.zshrc_extra'
+      state: touch
+  become_user: '{{ user.name }}'

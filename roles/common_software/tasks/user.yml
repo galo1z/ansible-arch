@@ -1,0 +1,8 @@
+---
+- name: common_software | Add alias fdfind = fd
+  blockinfile:
+    marker: '# {mark} Ansible managed: common_software role'
+    path: "{{ user.home }}/.zshrc_extra"
+    block: |
+      alias fd='fdfind -HIi'
+  become_user: '{{ user.name }}'

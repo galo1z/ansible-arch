@@ -1,0 +1,6 @@
+---
+- name: nvim | Create link vim -> nvim
+  file:
+    state: link
+    src: /usr/bin/nvim
+    dest: /usr/bin/vim

@@ -28,3 +28,6 @@ wireguard:
 
 #firefox:
 #  profile_dir: '1tflpthi.default' #change me every new installation
+
+# Workaround
+root_access: True

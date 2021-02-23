@@ -1,0 +1,8 @@
+---
+- block:
+  - name: alacritty | Create desktop file
+    template:
+      src: 'Alacritty.desktop.j2'
+      dest: '/usr/share/applications/Alacritty.desktop'
+  when: 
+    - ansible_facts['os_family'] == 'Debian' or ansible_facts['os_family'] == 'Ubuntu' #WHY NOT CENTOS?

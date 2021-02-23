@@ -1,0 +1,14 @@
+---
+- name: user | Create user
+  user:
+    name: '{{ user.name }}'
+
+- name: user | Allow sudo rights
+  blockinfile:
+    path: /etc/sudoers
+    marker: '# {mark} Ansible managed: user role for {{ user.name }}'
+    block: |
+      {{ user.name }} ALL=(ALL) ALL
+  when:
+    - user.name != 'root'
+    - allow_sudo == True

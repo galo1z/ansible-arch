@@ -1,2 +1,5 @@
 ---
 - include_role: name='software'
+- include_tasks: 'root.yml'
+  when: root_access == True
+- include_tasks: 'user.yml'

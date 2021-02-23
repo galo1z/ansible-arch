@@ -1,0 +1,12 @@
+---
+- block:
+  - name: tmux | Create tmux config
+    copy:
+      src: tmux.conf
+      dest: '{{ user.home }}/.tmux.conf'
+  
+  - name: tmux | Install tpm plguin manager
+    git:
+      repo: https://github.com/tmux-plugins/tpm
+      dest: '{{ user.home }}/.tmux/plugins/tpm'
+  become_user: '{{ user.name }}'

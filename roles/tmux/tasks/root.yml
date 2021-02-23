@@ -1,0 +1,32 @@
+---
+- name: tmux | Check if tmux is already installed
+  stat:
+    path: /usr/bin/tmux
+  register: tmuxExecutable
+
+- block: # Install in RedHat
+  - name: tmux | Install dependencies
+    package:
+      name: '{{ item }}'
+    with_items:
+      - automake
+      - libevent-devel
+      - ncurses-devel
+      - bison
+      - byacc
+
+  - name: tmux | Download tmux from git
+    git:
+      repo: https://github.com/tmux/tmux
+      dest: '{{ user.home }}/.tmux_source'
+
+  - name: tmux | Cofigure, make and place to /usr/bin
+    shell: |
+      cd {{ user.home }}/.tmux_source
+      /bin/sh autogen.sh
+      ./configure
+      make
+      cp tmux /usr/bin/tmux
+  when:
+    - ansible_facts['os_family'] == 'RedHat'
+    - tmuxExecutable.stat.exists == False

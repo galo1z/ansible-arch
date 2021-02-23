@@ -1,0 +1,28 @@
+---
+- block:
+  - block:
+    - name: alacritty | Create config directory
+      file:
+        state: directory
+        dest: '{{ user.home }}/.config/alacritty'
+    
+    - name: alacritty | Create config file
+      copy:
+        src: alacritty.yml
+        dest: '{{ user.home }}/.config/alacritty/alacritty.yml'
+  
+    - name: alacritty | Check that alacritty exists
+      stat:
+        path: '{{ user.home }}.local/bin/alacritty' 
+      register: alacritty_bin
+      when: 
+        - ansible_facts['os_family'] == 'Debian' or ansible_facts['os_family'] == 'Ubuntu' #WHY NOT CENTOS?
+  
+    - name: alacritty | Install alacritty using cargo
+      command: '{{ user.home }}/.cargo/bin/cargo install alacritty'
+      when: 
+        - ansible_facts['os_family'] == 'Debian' or ansible_facts['os_family'] == 'Ubuntu' #WHY NOT CENTOS?
+        - alacritty_bin.stat.exists == False 
+    become_user: '{{ user.name }}'
+  when: 
+    - ansible_facts['os_family'] == 'Debian' or ansible_facts['os_family'] == 'Ubuntu' #WHY NOT CENTOS?
