@@ -62,6 +62,15 @@
       dest: '{{ item }}'
     with_items:
       - '{{ ff_dir_name1.stdout }}'
+    when:
+    - ansible_os_family == "Debian" 
+
+  - name: firefox | Place user.js to default and custom profile
+    copy:
+      remote_src: yes
+      src: /tmp/user.js
+      dest: '{{ item }}'
+    with_items:
       - '{{ ff_dir_name2.stdout }}'
   # TODO: if def:
   #    - '/home/user1/.mozilla/firefox/{{ firefox.profile_dir}}'

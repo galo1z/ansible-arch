@@ -17,3 +17,9 @@
     name: docker
     state: started
     enabled: yes
+
+- name: docker | Add user docker group
+  ansible.builtin.user:
+    name: "{{ user.name }}"
+    groups: docker
+    append: yes

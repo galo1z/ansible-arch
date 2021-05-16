@@ -13,11 +13,11 @@
     - { role: 'yay',                  tags: 'yay' }
     - { role: 'pacman',               tags: 'pacman' }
     - { role: 'fstab',                tags: 'fstab' }
-    - { role: 'common_software',      tags: 'common' }
     - { role: 'extra_software',       tags: 'extra' }
+    - { role: 'common_software',      tags: 'common' }
     - { role: 'fonts',                tags: 'fonts' }
     - { role: 'wired-network',        tags: 'network' }
-    - { role: 'wireguard',            tags: 'wireguard' }
+      #    - { role: 'wireguard',            tags: 'wireguard' }
     - { role: 'i3',                   tags: 'i3' }
     - { role: 'i3blocks',             tags: 'i3blocks' }
     - { role: 'zsh',                  tags: 'zsh' }
@@ -29,8 +29,9 @@
     - { role: 'alacritty',            tags: 'alacritty' }
 #    - { role: 'bluetooth',            tags: 'bluetooth' }
     - { role: 'sound',                tags: 'sound' }
+    - { role: 'docker',                tags: 'docker' }
     - { role: 'virtualbox',           tags: 'virtualbox' }
-    - { role: 'vmware',           tags: 'vmware' }
+      #    - { role: 'vmware',           tags: 'vmware' }
     - { role: 'mimes',                tags: 'mimes' }
     - { role: 'apparmor',             tags: 'apparmor' }
       

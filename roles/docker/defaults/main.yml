@@ -2,6 +2,7 @@
 packages:
   pacman:
     - 'docker'
+    - 'docker-compose'
   apt:
     - 'apt-transport-https'
     - 'ca-certificates'

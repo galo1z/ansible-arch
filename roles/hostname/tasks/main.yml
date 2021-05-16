@@ -1,8 +1,14 @@
 ---
-- name: hostname | Set hostname
-  hostname:
-    name: "{{ hostname }}"
+- name: Set a hostname
+  ansible.builtin.hostname:
+    name: "{{ hostname}} "
     use: systemd
+
+
+#- name: hostname | Set hostname
+#  hostname:
+#    name: "{{ hostname }}"
+#    use: systemd
 
 - name: hostname | Set hostname in /etc/hosts 
   blockinfile:
