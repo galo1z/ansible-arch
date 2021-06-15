@@ -26,3 +26,32 @@ start_smb, start_ftp scripts
 smb:
 https://raw.githubusercontent.com/SecureAuthCorp/impacket/master/examples/smbserver.py
 https://blog.ropnop.com/transferring-files-from-kali-to-windows/#smb
+
+
+--------
+Алиасы вида brute_<service>
+-----
+написать скрипт который генерирует все возможные реверс-шеллы, включая такие, чтобы были все кавычки были обралены слешами
+
+privesc: алиас для поиска всех файлов принадлежащих пользователю, всех с битами, всех доступных всем на чтение в интересных каталогах
+
+------
+offtpic:
+fix fd чтобы находила скрытые файлы
+
+-----
+nmap udp grep not open
+
+add to software - 'unzip'
+
+wpscan1 = wpscan --url $ip/wordpress -e ap,at,cb,dbe,u
+
+add https://github.com/DominicBreuker/pspy to software to-be-uploaded-to-targer folder (create, if not exists)
+
+add python-uncompyle6 package
+
+add https://github.com/drtychai/wordlists/blob/master/fasttrack.txt
+
+add rpcbind (includes rpcinfo)
+
+msfconsole: set USER_FILE /opt/seclists/Usernames/Names/names.txt

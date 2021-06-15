@@ -14,3 +14,4 @@ whatweb
 sshpass
 smtp-user-enum
 smbclient
+hashcat

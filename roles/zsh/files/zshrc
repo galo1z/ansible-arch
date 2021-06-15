@@ -25,7 +25,7 @@ alias ip1='ip -brief -color a'
 alias sc="sudo systemctl"
 alias sclf="sudo systemctl list-units --state=failed"
 alias jctl="sudo journalctl -b --priority=warning"
-alias dmsg='sudo dmesg -l 1,2,3,4 --color=always --ctime -x'
+alias dmesg1='sudo dmesg -l 1,2,3,4 --color=always --ctime -x'
 alias dockex='docker exec -ti'
 
 #functions
@@ -45,6 +45,11 @@ function dd1() {
 function mount1() {
   sudo mount -o umask=0022,uid="$(id -u)" "$1" "$2"
 }
+
+function du1() {
+  du -s -h "$1" 2>/dev/null
+}
+
 
 #exports
 export PAGER='less'

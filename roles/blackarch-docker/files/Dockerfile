@@ -33,10 +33,10 @@ COPY configs/zshrc_extra .zshrc_extra
 COPY configs/msf_res.rb .msf_res.rb
 COPY configs/hybrid.vim .config/nvim/colors/hybrid.vim
 COPY configs/init.vim .config/nvim/init.vim
-RUN chmod +x /root/scripts/*
 
 # Misc
-COPY scripts /root/scripts
+#COPY scripts /root/scripts
+#RUN chmod +x /root/scripts/*
 
 # Get seclists
 RUN git clone --depth=1 https://github.com/danielmiessler/seclists /opt/seclists && \
