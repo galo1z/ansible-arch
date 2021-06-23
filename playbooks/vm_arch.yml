@@ -6,8 +6,6 @@
   become_method: su
 
   roles:
-    - { role: 'wireguard',            tags: 'wireguard','wg' }
-    - { role: 'hostname',             tags: 'hostname' }
     - { role: 'locale',               tags: 'locale' }
     - { role: 'time',                 tags: 'time' }
     - { role: 'user',                 tags: 'user' }
@@ -17,7 +15,6 @@
     - { role: 'extra_software',       tags: 'extra' }
     - { role: 'common_software',      tags: 'common' }
     - { role: 'fonts',                tags: 'fonts' }
-    - { role: 'wired-network',        tags: 'network' }
     - { role: 'i3',                   tags: 'i3' }
     - { role: 'i3blocks',             tags: 'i3blocks' }
     - { role: 'zsh',                  tags: 'zsh' }
@@ -25,14 +22,10 @@
     - { role: 'tmux',                 tags: 'tmux' }
     - { role: 'thunar',               tags: 'thunar' }
     - { role: 'zathura',              tags: 'zathura' }
-    - { role: 'typora',               tags: 'typora' }
     - { role: 'alacritty',            tags: 'alacritty' }
     - { role: 'sound',                tags: 'sound' }
     - { role: 'docker',               tags: 'docker' }
-    - { role: 'virtualbox',           tags: 'virtualbox' }
-    - { role: 'vmware',               tags: 'vmware' }
-    - { role: 'mimes',                tags: 'mimes' }
-    - { role: 'apparmor',             tags: 'apparmor' }
+    - { role: 'mimes'                 tags: 'mimes' }
       
   post_tasks:
     - name: Fix access rights for files in home dir

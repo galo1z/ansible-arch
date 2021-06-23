@@ -55,3 +55,25 @@ add https://github.com/drtychai/wordlists/blob/master/fasttrack.txt
 add rpcbind (includes rpcinfo)
 
 msfconsole: set USER_FILE /opt/seclists/Usernames/Names/names.txt
+
+-----
+add lib32-gcc-libs to be able to complie 32bit
+add net-snmp # snmpwalk tool
+
+add to normal zsh
+function cheat() {
+ curl "cheat.sh/$1"
+}
+
+--------
+
+yay = yay -S --noconfirm $1
+
+rocm-opencl-runtime - for amd hashcat ?tocheck
+* for install needs link to vim to be deleted!
+
+
+add  ettercap - to analyze pcap
+
+----
+insatll script: add hash verif
