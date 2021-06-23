@@ -1,0 +1,15 @@
+---
+- include_role: name='software'
+
+- block:
+  - name: xterm | Create config file
+    copy:
+      src: Xresources
+      dest: '{{ user.home }}/.Xresources'
+  
+  - name: xterm | Enable xres autoload
+    blockinfile:
+      marker: '# {mark} Ansible managed: xterm role'
+      path: '{{ user.home }}/.config/startup.sh'
+      block: 'xrdb -merge ~/.Xresources # Apply xterm config'
+  become_user: '{{ user.name }}'

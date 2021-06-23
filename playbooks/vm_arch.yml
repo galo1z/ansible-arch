@@ -11,7 +11,6 @@
     - { role: 'user',                 tags: 'user' }
     - { role: 'yay',                  tags: 'yay' }
     - { role: 'pacman',               tags: 'pacman' }
-    - { role: 'fstab',                tags: 'fstab' }
     - { role: 'extra_software',       tags: 'extra' }
     - { role: 'common_software',      tags: 'common' }
     - { role: 'fonts',                tags: 'fonts' }
@@ -23,9 +22,10 @@
     - { role: 'thunar',               tags: 'thunar' }
     - { role: 'zathura',              tags: 'zathura' }
     - { role: 'alacritty',            tags: 'alacritty' }
+    - { role: 'xterm',            tags: 'xterm' }
     - { role: 'sound',                tags: 'sound' }
     - { role: 'docker',               tags: 'docker' }
-    - { role: 'mimes'                 tags: 'mimes' }
+    - { role: 'mimes',                 tags: 'mimes' }
       
   post_tasks:
     - name: Fix access rights for files in home dir

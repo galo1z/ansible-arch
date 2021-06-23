@@ -1,0 +1,88 @@
+! color theme shared by xterm.vt100 & urxvt
+! tvale
+xterm*background: #000000
+xterm*foreground: #FFFFFF
+!black
+*color0 : #222222
+*color8 : #454545
+!red
+*color1 : #B22222
+*color9 : #FA8072
+!green
+*color2 : #556B2F
+*color10: #9ACD32
+!yellow
+*color3 : #B8860B
+*color11: #DAA520
+!blue
+*color4 : #4682B4
+*color12: #6495ED
+!magenta
+*color5 : #9932CC
+*color13: #DA70D6
+!cyan
+*color6 : #87CEEB
+*color14: #B0E0E6
+!white
+*color7 : #C0C0C0
+*color15: #FFFFFF
+
+Xft.dpi:                96
+Xft.autohint:  0
+Xft.lcdfilter:  lcddefault
+Xft.hinting:            1
+Xft.hintstyle:          hintslight
+Xft.antialias:          1
+Xft.rgba:               rgb
+
+! Application Resources
+xterm.locale: true
+xterm.termName: xterm-256color
+xterm.utmpInhibit: true
+
+! VT100 Widget Resources
+xterm*allowTitleOps:  false
+xterm*altSendsEscape: true
+xterm*bellIsUrgent: true
+xterm*borderLess: true
+! allow selecting email/url by double click
+xterm*charClass: 33:48,37-38:48,45-47:48,64:48,58:48,126:48,61:48,63:48,43:48,35:48
+xterm*colorBD: wheat
+xterm*colorBDMode: true
+xterm*colorUL: green
+xterm*colorULMode: false
+xterm*cursorBlink: false
+xterm*cursorColor: green
+xterm*cursorUnderLine: False
+xterm*eightBitInput: false
+! uncomment to output a summary of each font s metrics
+!xterm.reportFonts: true
+XTerm.vt100.faceName: Hack:size=12
+XTerm.vt100.faceNameDoublesize: Hack:size=12
+xterm*fastScroll: true
+xterm*highlightSelection: true
+XTerm*jumpScroll: true
+xterm*loginshell: true
+XTerm*multiScroll: true
+xterm*printAttributes: 2
+xterm*printerCommand: xterm -T History -e sh -c 'less -r -o /tmp/xterm.dump <&3' 3<&0
+xterm*rightScrollBar: true
+xterm*saveLines: 10000
+xterm*scrollBar: false
+xterm*trimSelection: true
+xterm*veryBoldColors: 4
+xterm*xftAntialias: true
+
+
+
+xterm.vt100.translations: #override \
+    ~Shift ~Ctrl<Btn2Up>: insert-selection(PRIMARY) \n\
+    Ctrl ~Shift <KeyPress>Insert: insert-selection(CLIPBOARD) \n\
+    ~Ctrl ~Meta ~Shift <BtnUp>: select-end(CLIPBOARD,PRIMARY,CUT_BUFFER0) \n\
+    Meta <KeyPress>/: dabbrev-expand() \n\
+    Meta <KeyPress>i: print-everything() \n\
+    Meta <KeyPress>o: exec-formatted("xdg-open '%t'", PRIMARY) \n\
+    Shift Ctrl <Key> C: copy-selection(CLIPBOARD) \n\
+    Shift Ctrl <Key> V: insert-selection(CLIPBOARD)
+
+*selectToClipboard: true
