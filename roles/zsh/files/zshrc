@@ -50,6 +50,10 @@ function du1() {
   du -s -h "$1" 2>/dev/null
 }
 
+function cheat() {
+  curl "cheat.sh/$1"
+}
+
 
 #exports
 export PAGER='less'

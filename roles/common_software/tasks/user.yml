@@ -7,3 +7,12 @@
       alias fd='fdfind -HIi'
   become_user: '{{ user.name }}'
   when: ansible_os_family == "Debian" or ansible_os_family == "Kali GNU/Linux" or ansible_facts['os_family'] == 'Ubuntu'
+
+- name: common_software | Add alias fd
+  blockinfile:
+    marker: '# {mark} Ansible managed: common_software role'
+    path: "{{ user.home }}/.zshrc_extra"
+    block: |
+      alias fd='fd -HIi'
+  become_user: '{{ user.name }}'
+  when: ansible_os_family == "Archlinux"

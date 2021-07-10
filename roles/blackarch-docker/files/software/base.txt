@@ -12,3 +12,4 @@ fzf
 fd
 ripgrep
 openssh
+unzip

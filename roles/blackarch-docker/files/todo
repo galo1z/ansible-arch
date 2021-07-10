@@ -1,17 +1,12 @@
-for start_web dir:
 
 #PrivEsc
-https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite
-https://raw.githubusercontent.com/rebootuser/LinEnum/master/LinEnum.sh
+for start_web dir:
 binary and c-code for priv esc
 su bruteforce
-socat or alternative
 https://github.com/rasta-mouse/Watson
 
 
 TODO:
-
-aliases: start_web in scripts and stuff dir
 
 script with useful aliases for target (lip, lport, grep, fd, stuff, ps, ...)
 
@@ -20,14 +15,6 @@ functions:
 
 win_download (1 arg) - generate download command for windows from my host. arg is filename to download (certutil.exe command?)
 
----------
-start_smb, start_ftp scripts
-
-smb:
-https://raw.githubusercontent.com/SecureAuthCorp/impacket/master/examples/smbserver.py
-https://blog.ropnop.com/transferring-files-from-kali-to-windows/#smb
-
-
 --------
 Алиасы вида brute_<service>
 -----
@@ -35,14 +22,8 @@ https://blog.ropnop.com/transferring-files-from-kali-to-windows/#smb
 
 privesc: алиас для поиска всех файлов принадлежащих пользователю, всех с битами, всех доступных всем на чтение в интересных каталогах
 
-------
-offtpic:
-fix fd чтобы находила скрытые файлы
-
 -----
 nmap udp grep not open
-
-add to software - 'unzip'
 
 wpscan1 = wpscan --url $ip/wordpress -e ap,at,cb,dbe,u
 
@@ -52,28 +33,9 @@ add python-uncompyle6 package
 
 add https://github.com/drtychai/wordlists/blob/master/fasttrack.txt
 
-add rpcbind (includes rpcinfo)
-
-msfconsole: set USER_FILE /opt/seclists/Usernames/Names/names.txt
-
 -----
-add lib32-gcc-libs to be able to complie 32bit
-add net-snmp # snmpwalk tool
-
-add to normal zsh
-function cheat() {
- curl "cheat.sh/$1"
-}
-
---------
-
-yay = yay -S --noconfirm $1
-
 rocm-opencl-runtime - for amd hashcat ?tocheck
 * for install needs link to vim to be deleted!
-
-
-add  ettercap - to analyze pcap
 
 ----
 insatll script: add hash verif

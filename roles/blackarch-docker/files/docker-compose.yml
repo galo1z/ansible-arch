@@ -12,4 +12,4 @@ services:
     tty: true
     restart: unless-stopped 
     volumes:
-      - /home/user0/hack:/root/share
+      - /home/user0/hack:/root/hack

@@ -12,4 +12,11 @@
     block: |
       aur_builder ALL=(ALL) NOPASSWD:/bin/pacman
 
+- name: yay | Add alias
+  blockinfile:
+    marker: '# {mark} Ansible managed: yay role'
+    path: "{{ user.home }}/.zshrc_extra"
+    block: |
+      yay -S --noconfirm $1
+
 - include_role: name='software'

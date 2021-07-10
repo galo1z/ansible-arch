@@ -15,3 +15,7 @@ sshpass
 smtp-user-enum
 smbclient
 hashcat
+rpcbind
+lib32-gcc-libs
+net-snmp
+ettercap

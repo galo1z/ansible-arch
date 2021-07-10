@@ -15,6 +15,7 @@ packages:
     - 'zathura'
     - 'mpv'
     - 'file-roller'
+    - 'unzip'
 
   pacman:
     - 'firefox'

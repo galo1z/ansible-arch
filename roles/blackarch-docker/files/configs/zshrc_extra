@@ -60,4 +60,5 @@ function setproxy() {
   export proxy="$1"
 }
 
-
+alias start_fileserver='~/.scripts/start_fileserver.sh'
+alias get_pyshell='~/.scripts/get_pyshell.py'
